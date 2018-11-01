@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="jp.liferay.google.drive.search.model.GoogleDriveSearch">
+		<field name="uuid" type="String" />
+		<field name="gdId" type="long" />
+	</model>
+</model-hints>
