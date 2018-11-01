@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+
+<service-builder package-path="jp.liferay.google.drive.search">
+	<namespace>GD</namespace>
+	<entity local-service="true" name="GoogleDriveSearch" remote-service="true" data-source="noDataSource" uuid="true">
+		<column name="gdId" type="long" primary="true" />
+	</entity>
+</service-builder>
