@@ -23,6 +23,8 @@ import com.liferay.portal.kernel.dao.orm.Projection;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.model.PersistedModel;
+import com.liferay.portal.kernel.model.Repository;
+import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
@@ -170,6 +172,28 @@ public interface GoogleDriveSearchLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public GoogleDriveSearch fetchGoogleDriveSearch(long gdId);
 
+	/**
+	* Get Accessible Repositories
+	*
+	* @param scopeGroupId
+	* @return Accessible Repositories
+	* @throws PortalException
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Repository> getAccessibleRepositories(long scopeGroupId)
+		throws PortalException;
+
+	/**
+	* Get Accessible Repository Ids
+	*
+	* @param scopeGroupId
+	* @return Accessible Repository Ids by long
+	* @throws PortalException
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public long[] getAccessibleRepositoryIds(long scopeGroupId)
+		throws PortalException;
+
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public ActionableDynamicQuery getActionableDynamicQuery();
 
@@ -220,6 +244,51 @@ public interface GoogleDriveSearchLocalService extends BaseLocalService,
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public PersistedModel getPersistedModel(Serializable primaryKeyObj)
 		throws PortalException;
+
+	/**
+	* Check if it's Google Drive Repository
+	*
+	* @param repositoryId
+	* @return True if it's Google Drive or false.
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isGoogleDrive(long repositoryId);
+
+	/**
+	* Merge Hits from multiple repositories
+	*
+	* @param multiHits
+	* @param searchStartTime
+	* @return
+	*/
+	public Hits mergeHits(List<Hits> multiHits, long searchStartTime);
+
+	/**
+	* Search Google Drive
+	*
+	* @param repositoryId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Hits search(long repositoryId, String keywords, int start, int end);
+
+	/**
+	* Search Multiple Google Drive Repositories
+	*
+	* @param repositoryIds
+	Google Drive repository ids
+	* @param keyword
+	Search keywords
+	* @param start
+	Search start offset. The first time
+	* @param end
+	* @return
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Hits search(long[] repositoryIds, String keyword, int start, int end);
 
 	/**
 	* Updates the google drive search in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

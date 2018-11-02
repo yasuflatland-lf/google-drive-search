@@ -180,6 +180,31 @@ public class GoogleDriveSearchLocalServiceUtil {
 		return getService().fetchGoogleDriveSearch(gdId);
 	}
 
+	/**
+	* Get Accessible Repositories
+	*
+	* @param scopeGroupId
+	* @return Accessible Repositories
+	* @throws PortalException
+	*/
+	public static java.util.List<com.liferay.portal.kernel.model.Repository> getAccessibleRepositories(
+		long scopeGroupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getAccessibleRepositories(scopeGroupId);
+	}
+
+	/**
+	* Get Accessible Repository Ids
+	*
+	* @param scopeGroupId
+	* @return Accessible Repository Ids by long
+	* @throws PortalException
+	*/
+	public static long[] getAccessibleRepositoryIds(long scopeGroupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getAccessibleRepositoryIds(scopeGroupId);
+	}
+
 	public static com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery getActionableDynamicQuery() {
 		return getService().getActionableDynamicQuery();
 	}
@@ -238,6 +263,60 @@ public class GoogleDriveSearchLocalServiceUtil {
 		java.io.Serializable primaryKeyObj)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getPersistedModel(primaryKeyObj);
+	}
+
+	/**
+	* Check if it's Google Drive Repository
+	*
+	* @param repositoryId
+	* @return True if it's Google Drive or false.
+	*/
+	public static boolean isGoogleDrive(long repositoryId) {
+		return getService().isGoogleDrive(repositoryId);
+	}
+
+	/**
+	* Merge Hits from multiple repositories
+	*
+	* @param multiHits
+	* @param searchStartTime
+	* @return
+	*/
+	public static com.liferay.portal.kernel.search.Hits mergeHits(
+		java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
+		long searchStartTime) {
+		return getService().mergeHits(multiHits, searchStartTime);
+	}
+
+	/**
+	* Search Google Drive
+	*
+	* @param repositoryId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	public static com.liferay.portal.kernel.search.Hits search(
+		long repositoryId, String keywords, int start, int end) {
+		return getService().search(repositoryId, keywords, start, end);
+	}
+
+	/**
+	* Search Multiple Google Drive Repositories
+	*
+	* @param repositoryIds
+	Google Drive repository ids
+	* @param keyword
+	Search keywords
+	* @param start
+	Search start offset. The first time
+	* @param end
+	* @return
+	*/
+	public static com.liferay.portal.kernel.search.Hits search(
+		long[] repositoryIds, String keyword, int start, int end) {
+		return getService().search(repositoryIds, keyword, start, end);
 	}
 
 	/**

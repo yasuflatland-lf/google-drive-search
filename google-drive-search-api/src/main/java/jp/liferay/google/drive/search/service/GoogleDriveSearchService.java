@@ -19,11 +19,16 @@ import aQute.bnd.annotation.ProviderType;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
+import com.liferay.portal.kernel.model.Repository;
+import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
 import com.liferay.portal.kernel.spring.osgi.OSGiBeanProperties;
 import com.liferay.portal.kernel.transaction.Isolation;
+import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
+
+import java.util.List;
 
 /**
  * Provides the remote service interface for GoogleDriveSearch. Methods of this
@@ -51,9 +56,73 @@ public interface GoogleDriveSearchService extends BaseService {
 	 */
 
 	/**
+	* Get Accessible Repositories
+	*
+	* @param scopeGroupId
+	* @return Accessible Repositories
+	* @throws PortalException
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public List<Repository> getAccessibleRepositories(long scopeGroupId)
+		throws PortalException;
+
+	/**
+	* Get Accessible Repository Ids
+	*
+	* @param scopeGroupId
+	* @return Accessible Repository Ids by long
+	* @throws PortalException
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public long[] getAccessibleRepositoryIds(long scopeGroupId)
+		throws PortalException;
+
+	/**
 	* Returns the OSGi service identifier.
 	*
 	* @return the OSGi service identifier
 	*/
 	public String getOSGiServiceIdentifier();
+
+	/**
+	* Check if it's Google Drive Repository
+	*
+	* @param repositoryId
+	* @return True if it's Google Drive or false.
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isGoogleDrive(long repositoryId);
+
+	/**
+	* Merge Hits from multiple repositories
+	*
+	* @param multiHits
+	* @param searchStartTime
+	* @return
+	*/
+	public Hits mergeHits(List<Hits> multiHits, long searchStartTime);
+
+	/**
+	* Search Google Drive
+	*
+	* @param repositoryId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Hits search(long repositoryId, String keywords, int start, int end);
+
+	/**
+	* Search Multiple Google Drive Repositories
+	*
+	* @param repositoryIds Google Drive repository ids
+	* @param keyword Search keywords
+	* @param start Search start offset. The first time
+	* @param end
+	* @return
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Hits search(long[] repositoryIds, String keyword, int start, int end);
 }

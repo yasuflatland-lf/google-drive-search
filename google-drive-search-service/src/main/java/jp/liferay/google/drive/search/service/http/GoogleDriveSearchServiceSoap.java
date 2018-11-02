@@ -16,9 +16,16 @@ package jp.liferay.google.drive.search.service.http;
 
 import aQute.bnd.annotation.ProviderType;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * {@link jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil} service utility. The
+ * {@link GoogleDriveSearchServiceUtil} service utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it is difficult for SOAP to
  * support certain types.
@@ -53,9 +60,73 @@ import aQute.bnd.annotation.ProviderType;
  * @author Brian Wing Shun Chan
  * @see GoogleDriveSearchServiceHttp
  * @see jp.liferay.google.drive.search.model.GoogleDriveSearchSoap
- * @see jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil
+ * @see GoogleDriveSearchServiceUtil
  * @generated
  */
 @ProviderType
 public class GoogleDriveSearchServiceSoap {
+	/**
+	* Get Accessible Repository Ids
+	*
+	* @param scopeGroupId
+	* @return Accessible Repository Ids by long
+	* @throws PortalException
+	*/
+	public static long[] getAccessibleRepositoryIds(long scopeGroupId)
+		throws RemoteException {
+		try {
+			long[] returnValue = GoogleDriveSearchServiceUtil.getAccessibleRepositoryIds(scopeGroupId);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	/**
+	* Get Accessible Repositories
+	*
+	* @param scopeGroupId
+	* @return Accessible Repositories
+	* @throws PortalException
+	*/
+	public static com.liferay.portal.kernel.model.RepositorySoap[] getAccessibleRepositories(
+		long scopeGroupId) throws RemoteException {
+		try {
+			java.util.List<com.liferay.portal.kernel.model.Repository> returnValue =
+				GoogleDriveSearchServiceUtil.getAccessibleRepositories(scopeGroupId);
+
+			return com.liferay.portal.kernel.model.RepositorySoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	/**
+	* Check if it's Google Drive Repository
+	*
+	* @param repositoryId
+	* @return True if it's Google Drive or false.
+	*/
+	public static boolean isGoogleDrive(long repositoryId)
+		throws RemoteException {
+		try {
+			boolean returnValue = GoogleDriveSearchServiceUtil.isGoogleDrive(repositoryId);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(GoogleDriveSearchServiceSoap.class);
 }
