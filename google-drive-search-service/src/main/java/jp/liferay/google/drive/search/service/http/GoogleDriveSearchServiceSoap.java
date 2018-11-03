@@ -72,12 +72,12 @@ public class GoogleDriveSearchServiceSoap {
 	* @return Accessible Repository Ids by long
 	* @throws PortalException
 	*/
-	public static long[] getAccessibleRepositoryIds(long scopeGroupId)
+	public static String getAccessibleRepositoryIds(long scopeGroupId)
 		throws RemoteException {
 		try {
-			long[] returnValue = GoogleDriveSearchServiceUtil.getAccessibleRepositoryIds(scopeGroupId);
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.getAccessibleRepositoryIds(scopeGroupId);
 
-			return returnValue;
+			return returnValue.toString();
 		}
 		catch (Exception e) {
 			_log.error(e, e);
@@ -93,13 +93,12 @@ public class GoogleDriveSearchServiceSoap {
 	* @return Accessible Repositories
 	* @throws PortalException
 	*/
-	public static com.liferay.portal.kernel.model.RepositorySoap[] getAccessibleRepositories(
-		long scopeGroupId) throws RemoteException {
+	public static String getAccessibleRepositories(long scopeGroupId)
+		throws RemoteException {
 		try {
-			java.util.List<com.liferay.portal.kernel.model.Repository> returnValue =
-				GoogleDriveSearchServiceUtil.getAccessibleRepositories(scopeGroupId);
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.getAccessibleRepositories(scopeGroupId);
 
-			return com.liferay.portal.kernel.model.RepositorySoap.toSoapModels(returnValue);
+			return returnValue.toString();
 		}
 		catch (Exception e) {
 			_log.error(e, e);
@@ -114,12 +113,12 @@ public class GoogleDriveSearchServiceSoap {
 	* @param repositoryId
 	* @return True if it's Google Drive or false.
 	*/
-	public static boolean isGoogleDrive(long repositoryId)
+	public static String isGoogleDrive(long repositoryId)
 		throws RemoteException {
 		try {
-			boolean returnValue = GoogleDriveSearchServiceUtil.isGoogleDrive(repositoryId);
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.isGoogleDrive(repositoryId);
 
-			return returnValue;
+			return returnValue.toString();
 		}
 		catch (Exception e) {
 			_log.error(e, e);
@@ -134,12 +133,12 @@ public class GoogleDriveSearchServiceSoap {
 	* @param scopeGroupId
 	* @return true if any google drive repository exists or false.
 	*/
-	public static boolean isAnyGoogleDrive(long scopeGroupId)
+	public static String isAnyGoogleDrive(long scopeGroupId)
 		throws RemoteException {
 		try {
-			boolean returnValue = GoogleDriveSearchServiceUtil.isAnyGoogleDrive(scopeGroupId);
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.isAnyGoogleDrive(scopeGroupId);
 
-			return returnValue;
+			return returnValue.toString();
 		}
 		catch (Exception e) {
 			_log.error(e, e);

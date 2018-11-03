@@ -55,7 +55,7 @@ import jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil;
  */
 @ProviderType
 public class GoogleDriveSearchServiceHttp {
-	public static long[] getAccessibleRepositoryIds(
+	public static com.liferay.portal.kernel.json.JSONObject getAccessibleRepositoryIds(
 		HttpPrincipal httpPrincipal, long scopeGroupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		try {
@@ -79,7 +79,7 @@ public class GoogleDriveSearchServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return (long[])returnObj;
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -88,7 +88,7 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	public static java.util.List<com.liferay.portal.kernel.model.Repository> getAccessibleRepositories(
+	public static com.liferay.portal.kernel.json.JSONObject getAccessibleRepositories(
 		HttpPrincipal httpPrincipal, long scopeGroupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		try {
@@ -112,7 +112,7 @@ public class GoogleDriveSearchServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return (java.util.List<com.liferay.portal.kernel.model.Repository>)returnObj;
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -121,8 +121,8 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	public static boolean isGoogleDrive(HttpPrincipal httpPrincipal,
-		long repositoryId) {
+	public static com.liferay.portal.kernel.json.JSONObject isGoogleDrive(
+		HttpPrincipal httpPrincipal, long repositoryId) {
 		try {
 			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
 					"isGoogleDrive", _isGoogleDriveParameterTypes2);
@@ -139,7 +139,7 @@ public class GoogleDriveSearchServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return ((Boolean)returnObj).booleanValue();
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -148,8 +148,8 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	public static boolean isAnyGoogleDrive(HttpPrincipal httpPrincipal,
-		long scopeGroupId) {
+	public static com.liferay.portal.kernel.json.JSONObject isAnyGoogleDrive(
+		HttpPrincipal httpPrincipal, long scopeGroupId) {
 		try {
 			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
 					"isAnyGoogleDrive", _isAnyGoogleDriveParameterTypes3);
@@ -166,7 +166,7 @@ public class GoogleDriveSearchServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return ((Boolean)returnObj).booleanValue();
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);

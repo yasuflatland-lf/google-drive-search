@@ -50,7 +50,7 @@ public class GoogleDriveSearchServiceUtil {
 	* @return Accessible Repositories
 	* @throws PortalException
 	*/
-	public static java.util.List<com.liferay.portal.kernel.model.Repository> getAccessibleRepositories(
+	public static com.liferay.portal.kernel.json.JSONObject getAccessibleRepositories(
 		long scopeGroupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getAccessibleRepositories(scopeGroupId);
@@ -63,7 +63,8 @@ public class GoogleDriveSearchServiceUtil {
 	* @return Accessible Repository Ids by long
 	* @throws PortalException
 	*/
-	public static long[] getAccessibleRepositoryIds(long scopeGroupId)
+	public static com.liferay.portal.kernel.json.JSONObject getAccessibleRepositoryIds(
+		long scopeGroupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getAccessibleRepositoryIds(scopeGroupId);
 	}
@@ -83,7 +84,8 @@ public class GoogleDriveSearchServiceUtil {
 	* @param scopeGroupId
 	* @return true if any google drive repository exists or false.
 	*/
-	public static boolean isAnyGoogleDrive(long scopeGroupId) {
+	public static com.liferay.portal.kernel.json.JSONObject isAnyGoogleDrive(
+		long scopeGroupId) {
 		return getService().isAnyGoogleDrive(scopeGroupId);
 	}
 
@@ -93,7 +95,8 @@ public class GoogleDriveSearchServiceUtil {
 	* @param repositoryId
 	* @return True if it's Google Drive or false.
 	*/
-	public static boolean isGoogleDrive(long repositoryId) {
+	public static com.liferay.portal.kernel.json.JSONObject isGoogleDrive(
+		long repositoryId) {
 		return getService().isGoogleDrive(repositoryId);
 	}
 

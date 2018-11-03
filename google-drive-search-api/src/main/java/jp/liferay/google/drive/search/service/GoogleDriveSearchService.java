@@ -20,7 +20,6 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
-import com.liferay.portal.kernel.model.Repository;
 import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.security.access.control.AccessControlled;
 import com.liferay.portal.kernel.service.BaseService;
@@ -64,7 +63,7 @@ public interface GoogleDriveSearchService extends BaseService {
 	* @throws PortalException
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public List<Repository> getAccessibleRepositories(long scopeGroupId)
+	public JSONObject getAccessibleRepositories(long scopeGroupId)
 		throws PortalException;
 
 	/**
@@ -75,7 +74,7 @@ public interface GoogleDriveSearchService extends BaseService {
 	* @throws PortalException
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public long[] getAccessibleRepositoryIds(long scopeGroupId)
+	public JSONObject getAccessibleRepositoryIds(long scopeGroupId)
 		throws PortalException;
 
 	/**
@@ -92,7 +91,7 @@ public interface GoogleDriveSearchService extends BaseService {
 	* @return true if any google drive repository exists or false.
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public boolean isAnyGoogleDrive(long scopeGroupId);
+	public JSONObject isAnyGoogleDrive(long scopeGroupId);
 
 	/**
 	* Check if it's Google Drive Repository
@@ -101,7 +100,7 @@ public interface GoogleDriveSearchService extends BaseService {
 	* @return True if it's Google Drive or false.
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public boolean isGoogleDrive(long repositoryId);
+	public JSONObject isGoogleDrive(long repositoryId);
 
 	/**
 	* Merge Hits from multiple repositories

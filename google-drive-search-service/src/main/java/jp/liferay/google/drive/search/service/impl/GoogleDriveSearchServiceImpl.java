@@ -16,6 +16,7 @@ package jp.liferay.google.drive.search.service.impl;
 
 import com.liferay.document.library.kernel.service.DLAppService;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSONArray;
 import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.model.Repository;
@@ -25,10 +26,9 @@ import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.service.RepositoryLocalService;
 import com.liferay.portal.spring.extender.service.ServiceReference;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import jp.liferay.google.drive.search.constants.GoogleDriveSearchServiceConstants;
 import jp.liferay.google.drive.search.service.base.GoogleDriveSearchServiceBaseImpl;
 
 /**
@@ -54,11 +54,21 @@ public class GoogleDriveSearchServiceImpl
 	 * @return Accessible Repository Ids by long
 	 * @throws PortalException
 	 */
-	public long[] getAccessibleRepositoryIds(long scopeGroupId)
+	public JSONObject getAccessibleRepositoryIds(long scopeGroupId)
 		throws PortalException {
 
-		return googleDriveSearchLocalService.getAccessibleRepositoryIds(
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
+
+		long[] ids = googleDriveSearchLocalService.getAccessibleRepositoryIds(
 			scopeGroupId);
+		JSONArray jsonArray = JSONFactoryUtil.createJSONArray();
+		for (int i = 0; i < ids.length; i++) {
+			jsonArray.put(ids[i]);
+		}
+
+		jsonObject.put(GoogleDriveSearchServiceConstants.RESULT, jsonArray);
+
+		return jsonObject;
 	}
 
 	/**
@@ -68,11 +78,25 @@ public class GoogleDriveSearchServiceImpl
 	 * @return Accessible Repositories
 	 * @throws PortalException
 	 */
-	public List<Repository> getAccessibleRepositories(long scopeGroupId)
+	public JSONObject getAccessibleRepositories(long scopeGroupId)
 		throws PortalException {
 
-		return googleDriveSearchLocalService.getAccessibleRepositories(
-			scopeGroupId);
+		List<Repository> repositories =
+			googleDriveSearchLocalService.getAccessibleRepositories(
+				scopeGroupId);
+
+		JSONObject repoJSONObject = JSONFactoryUtil.createJSONObject();
+
+		for (Repository repositroy : repositories) {
+			JSONObject itemJSONObject = JSONFactoryUtil.createJSONObject();
+			itemJSONObject.put(
+				Field.ENTRY_CLASS_PK, repositroy.getDlFolderId());
+			itemJSONObject.put(Field.TITLE, repositroy.getDescription());
+
+			repoJSONObject.put(Field.ENTRY_CLASS_PK, itemJSONObject);
+		}
+
+		return repoJSONObject;
 	}
 
 	/**
@@ -81,9 +105,15 @@ public class GoogleDriveSearchServiceImpl
 	 * @param repositoryId
 	 * @return True if it's Google Drive or false.
 	 */
-	public boolean isGoogleDrive(long repositoryId) {
+	public JSONObject isGoogleDrive(long repositoryId) {
 
-		return googleDriveSearchLocalService.isGoogleDrive(repositoryId);
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
+
+		boolean result =
+			googleDriveSearchLocalService.isGoogleDrive(repositoryId);
+		jsonObject.put(GoogleDriveSearchServiceConstants.RESULT, result);
+
+		return jsonObject;
 	}
 
 	/**
@@ -92,9 +122,15 @@ public class GoogleDriveSearchServiceImpl
 	 * @param scopeGroupId
 	 * @return true if any google drive repository exists or false.
 	 */
-	public boolean isAnyGoogleDrive(long scopeGroupId) {
+	public JSONObject isAnyGoogleDrive(long scopeGroupId) {
 
-		return googleDriveSearchLocalService.isAnyGoogleDrive(scopeGroupId);
+		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
+
+		boolean result =
+			googleDriveSearchLocalService.isAnyGoogleDrive(scopeGroupId);
+		jsonObject.put(GoogleDriveSearchServiceConstants.RESULT, result);
+
+		return jsonObject;
 	}
 
 	/**
