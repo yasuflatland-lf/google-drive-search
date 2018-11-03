@@ -16,12 +16,18 @@ package jp.liferay.google.drive.search.service.impl;
 
 import com.liferay.document.library.kernel.service.DLAppService;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.model.Repository;
+import com.liferay.portal.kernel.search.Document;
+import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.service.RepositoryLocalService;
 import com.liferay.portal.spring.extender.service.ServiceReference;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jp.liferay.google.drive.search.service.base.GoogleDriveSearchServiceBaseImpl;
 
@@ -81,6 +87,45 @@ public class GoogleDriveSearchServiceImpl
 	}
 
 	/**
+	 * Check if there are any Google Drive repository registered.
+	 * 
+	 * @param scopeGroupId
+	 * @return true if any google drive repository exists or false.
+	 */
+	public boolean isAnyGoogleDrive(long scopeGroupId) {
+
+		return googleDriveSearchLocalService.isAnyGoogleDrive(scopeGroupId);
+	}
+
+	/**
+	 * Convert Document List to JSON
+	 * 
+	 * @param documents
+	 * @return Json strings of Document List
+	 */
+	protected JSONObject convertDocumentToJson(List<Document> documents) {
+
+		JSONObject hitsJSONObject = JSONFactoryUtil.createJSONObject();
+
+		for (Document document : documents) {
+			JSONObject documentJSONObject = JSONFactoryUtil.createJSONObject();
+
+			documentJSONObject.put(Field.TITLE, document.get(Field.TITLE));
+			documentJSONObject.put(
+				Field.ENTRY_CLASS_PK, document.get(Field.ENTRY_CLASS_PK));
+			documentJSONObject.put(THUMBNAIL_SRC, document.get(THUMBNAIL_SRC));
+			documentJSONObject.put(Field.URL, document.get(Field.URL));
+			documentJSONObject.put(MIME_TYPE, document.get(MIME_TYPE));
+
+			hitsJSONObject.put(
+				document.get(Field.ENTRY_CLASS_PK), documentJSONObject);
+		}
+
+		return hitsJSONObject;
+
+	}
+
+	/**
 	 * Search Google Drive
 	 * 
 	 * @param repositoryId
@@ -89,10 +134,15 @@ public class GoogleDriveSearchServiceImpl
 	 * @param end
 	 * @return
 	 */
-	public Hits search(long repositoryId, String keywords, int start, int end) {
+	public JSONObject search(
+		long repositoryId, String keywords, int start, int end) {
 
-		return googleDriveSearchLocalService.search(
+		Hits hits = googleDriveSearchLocalService.search(
 			repositoryId, keywords, start, end);
+
+		List<Document> documents = hits.toList();
+
+		return convertDocumentToJson(documents);
 	}
 
 	/**
@@ -102,10 +152,15 @@ public class GoogleDriveSearchServiceImpl
 	 * @param searchStartTime
 	 * @return
 	 */
-	public Hits mergeHits(List<Hits> multiHits, long searchStartTime) {
+	public JSONObject mergeHits(List<Hits> multiHits, long searchStartTime) {
 
-		return googleDriveSearchLocalService.mergeHits(
-			multiHits, searchStartTime);
+		Hits hits =
+			googleDriveSearchLocalService.mergeHits(multiHits, searchStartTime);
+
+		List<Document> documents = hits.toList();
+
+		return convertDocumentToJson(documents);
+
 	}
 
 	/**
@@ -117,12 +172,24 @@ public class GoogleDriveSearchServiceImpl
 	 * @param end
 	 * @return
 	 */
-	public Hits search(
+	public JSONObject search(
 		long[] repositoryIds, String keyword, int start, int end) {
 
-		return googleDriveSearchLocalService.search(
+		Hits hits = googleDriveSearchLocalService.search(
 			repositoryIds, keyword, start, end);
+
+		List<Document> documents = hits.toList();
+
+		return convertDocumentToJson(documents);
+
 	}
+
+	/**
+	 * TODO: this need to be replaced by GoogleDriveConstants.THUMBNAIL_SRC,
+	 */
+	protected static final String THUMBNAIL_SRC = "thumbnailSrc";
+
+	protected static final String MIME_TYPE = "mimeType";
 
 	@ServiceReference(type = RepositoryLocalService.class)
 	protected RepositoryLocalService repositoryLocalService;

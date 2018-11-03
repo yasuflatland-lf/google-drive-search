@@ -18,6 +18,7 @@ import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.model.Repository;
 import com.liferay.portal.kernel.search.Hits;
@@ -85,6 +86,15 @@ public interface GoogleDriveSearchService extends BaseService {
 	public String getOSGiServiceIdentifier();
 
 	/**
+	* Check if there are any Google Drive repository registered.
+	*
+	* @param scopeGroupId
+	* @return true if any google drive repository exists or false.
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public boolean isAnyGoogleDrive(long scopeGroupId);
+
+	/**
 	* Check if it's Google Drive Repository
 	*
 	* @param repositoryId
@@ -100,7 +110,7 @@ public interface GoogleDriveSearchService extends BaseService {
 	* @param searchStartTime
 	* @return
 	*/
-	public Hits mergeHits(List<Hits> multiHits, long searchStartTime);
+	public JSONObject mergeHits(List<Hits> multiHits, long searchStartTime);
 
 	/**
 	* Search Google Drive
@@ -112,7 +122,8 @@ public interface GoogleDriveSearchService extends BaseService {
 	* @return
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Hits search(long repositoryId, String keywords, int start, int end);
+	public JSONObject search(long repositoryId, String keywords, int start,
+		int end);
 
 	/**
 	* Search Multiple Google Drive Repositories
@@ -124,5 +135,6 @@ public interface GoogleDriveSearchService extends BaseService {
 	* @return
 	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Hits search(long[] repositoryIds, String keyword, int start, int end);
+	public JSONObject search(long[] repositoryIds, String keyword, int start,
+		int end);
 }

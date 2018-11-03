@@ -128,5 +128,96 @@ public class GoogleDriveSearchServiceSoap {
 		}
 	}
 
+	/**
+	* Check if there are any Google Drive repository registered.
+	*
+	* @param scopeGroupId
+	* @return true if any google drive repository exists or false.
+	*/
+	public static boolean isAnyGoogleDrive(long scopeGroupId)
+		throws RemoteException {
+		try {
+			boolean returnValue = GoogleDriveSearchServiceUtil.isAnyGoogleDrive(scopeGroupId);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	/**
+	* Search Google Drive
+	*
+	* @param repositoryId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	public static String search(long repositoryId, String keywords, int start,
+		int end) throws RemoteException {
+		try {
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.search(repositoryId,
+					keywords, start, end);
+
+			return returnValue.toString();
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	/**
+	* Merge Hits from multiple repositories
+	*
+	* @param multiHits
+	* @param searchStartTime
+	* @return
+	*/
+	public static String mergeHits(
+		java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
+		long searchStartTime) throws RemoteException {
+		try {
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.mergeHits(multiHits,
+					searchStartTime);
+
+			return returnValue.toString();
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	/**
+	* Search Multiple Google Drive Repositories
+	*
+	* @param repositoryIds Google Drive repository ids
+	* @param keyword Search keywords
+	* @param start Search start offset. The first time
+	* @param end
+	* @return
+	*/
+	public static String search(long[] repositoryIds, String keyword,
+		int start, int end) throws RemoteException {
+		try {
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.search(repositoryIds,
+					keyword, start, end);
+
+			return returnValue.toString();
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(GoogleDriveSearchServiceSoap.class);
 }

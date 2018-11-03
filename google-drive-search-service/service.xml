@@ -5,5 +5,8 @@
 	<namespace>GD</namespace>
 	<entity local-service="true" name="GoogleDriveSearch" remote-service="true" data-source="noDataSource" uuid="true">
 		<column name="gdId" type="long" primary="true" />
+		
+		<reference entity="DLApp" package-path="com.liferay.portlet.documentlibrary" />
+		<reference entity="Repository" package-path="com.liferay.portal" />
 	</entity>
 </service-builder>

@@ -78,6 +78,16 @@ public class GoogleDriveSearchServiceUtil {
 	}
 
 	/**
+	* Check if there are any Google Drive repository registered.
+	*
+	* @param scopeGroupId
+	* @return true if any google drive repository exists or false.
+	*/
+	public static boolean isAnyGoogleDrive(long scopeGroupId) {
+		return getService().isAnyGoogleDrive(scopeGroupId);
+	}
+
+	/**
 	* Check if it's Google Drive Repository
 	*
 	* @param repositoryId
@@ -94,7 +104,7 @@ public class GoogleDriveSearchServiceUtil {
 	* @param searchStartTime
 	* @return
 	*/
-	public static com.liferay.portal.kernel.search.Hits mergeHits(
+	public static com.liferay.portal.kernel.json.JSONObject mergeHits(
 		java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
 		long searchStartTime) {
 		return getService().mergeHits(multiHits, searchStartTime);
@@ -109,7 +119,7 @@ public class GoogleDriveSearchServiceUtil {
 	* @param end
 	* @return
 	*/
-	public static com.liferay.portal.kernel.search.Hits search(
+	public static com.liferay.portal.kernel.json.JSONObject search(
 		long repositoryId, String keywords, int start, int end) {
 		return getService().search(repositoryId, keywords, start, end);
 	}
@@ -123,7 +133,7 @@ public class GoogleDriveSearchServiceUtil {
 	* @param end
 	* @return
 	*/
-	public static com.liferay.portal.kernel.search.Hits search(
+	public static com.liferay.portal.kernel.json.JSONObject search(
 		long[] repositoryIds, String keyword, int start, int end) {
 		return getService().search(repositoryIds, keyword, start, end);
 	}

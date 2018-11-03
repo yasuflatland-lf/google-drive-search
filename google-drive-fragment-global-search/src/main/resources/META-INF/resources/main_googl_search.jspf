@@ -1,0 +1,60 @@
+		<div class="list-group">
+		    <a aria-expanded="false" class="collapsed list-group-heading" data-toggle="collapse" href="#<portlet:namespace />googleDriveSearchTab">
+				<liferay-ui:icon
+					iconCssClass="glyphicon-cloud"
+					label="<%= true %>"
+					linkCssClass="btn btn-default"
+					message="Search results from Google Drive"
+					url=''
+				/>
+		    </a>
+		    <div class="collapse" id="<portlet:namespace />googleDriveSearchTab">
+		        <ul class="display-style-descriptive tabular-list-group" id="<portlet:namespace />googleSearchResults">
+		        </ul>
+				<div class="loading-icon linear loading-icon-lg"></div>
+		    </div>
+		</div>
+		
+<script type="text/html" id="<portlet:namespace />search_results">
+    <li class="list-group-item" data-qa-id="row">
+        <div class=" list-group-item-field">
+            <div class="user-icon-color-3 user-icon-lg user-icon user-icon-info">
+                <span>
+                    <liferay-ui:icon
+                        iconCssClass="icon-search"
+                        label="false"
+                        linkCssClass=""
+                        message=""
+                        url=''
+                    />
+                </span>
+            </div>
+        </div>
+        <div class=" list-group-item-content">
+            <h5> <a href="<@= url @>">
+                    <strong><span class="highlight"><@= title @></span></strong> </a> </h5>
+            <h6 class="text-default"> Google Drive - <@= description @></h6>
+        </div>
+    </li>
+
+</script>
+		
+<aui:script use="aui-base">
+// Convert bracket for Lodash template to avoid overraping jsp tag.
+_.templateSettings = {
+    interpolate: /\<\@\=(.+?)\@\>/gim,
+    evaluate: /\<\@([\s\S]+?)\@\>/gim,
+    escape: /\<\@\-(.+?)\@\>/gim
+};
+
+	Liferay.Service(
+	  '/gd.googledrivesearch/get-accessible-repositories',
+	  {
+	    scopeGroupId: <%= String.valueOf(themeDisplay.getScopeGroupId())%>
+	  },
+	  function(obj) {
+	    console.log(obj);
+	  }
+	);
+
+</aui:script>

@@ -280,6 +280,17 @@ public class GoogleDriveSearchLocalServiceWrapper
 	}
 
 	/**
+	* Check if there are any Google Drive repository registered.
+	*
+	* @param scopeGroupId
+	* @return true if any google drive repository exists or false.
+	*/
+	@Override
+	public boolean isAnyGoogleDrive(long scopeGroupId) {
+		return _googleDriveSearchLocalService.isAnyGoogleDrive(scopeGroupId);
+	}
+
+	/**
 	* Check if it's Google Drive Repository
 	*
 	* @param repositoryId
@@ -324,12 +335,9 @@ public class GoogleDriveSearchLocalServiceWrapper
 	/**
 	* Search Multiple Google Drive Repositories
 	*
-	* @param repositoryIds
-	Google Drive repository ids
-	* @param keyword
-	Search keywords
-	* @param start
-	Search start offset. The first time
+	* @param repositoryIds Google Drive repository ids
+	* @param keyword Search keywords
+	* @param start Search start offset. The first time
 	* @param end
 	* @return
 	*/

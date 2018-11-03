@@ -50,7 +50,6 @@ import jp.liferay.google.drive.search.service.base.GoogleDriveSearchLocalService
  *
  * @author Brian Wing Shun Chan
  * @author Yasuyuki Takeo
- * 
  * @see GoogleDriveSearchLocalServiceBaseImpl
  * @see jp.liferay.google.drive.search.service.GoogleDriveSearchLocalServiceUtil
  */
@@ -127,6 +126,27 @@ public class GoogleDriveSearchLocalServiceImpl
 	}
 
 	/**
+	 * Check if there are any Google Drive repository registered.
+	 * 
+	 * @param scopeGroupId
+	 * @return true if any google drive repository exists or false.
+	 */
+	public boolean isAnyGoogleDrive(long scopeGroupId) {
+
+		try {
+			List<Repository> repositories =
+				getAccessibleRepositories(scopeGroupId);
+
+			return repositories.stream().anyMatch(
+				r -> true == isGoogleDrive(r.getRepositoryId()));
+		}
+		catch (PortalException e) {
+			_log.error(e, e);
+			return false;
+		}
+	}
+
+	/**
 	 * Search Google Drive
 	 * 
 	 * @param repositoryId
@@ -190,12 +210,9 @@ public class GoogleDriveSearchLocalServiceImpl
 	/**
 	 * Search Multiple Google Drive Repositories
 	 * 
-	 * @param repositoryIds
-	 *            Google Drive repository ids
-	 * @param keyword
-	 *            Search keywords
-	 * @param start
-	 *            Search start offset. The first time
+	 * @param repositoryIds Google Drive repository ids
+	 * @param keyword Search keywords
+	 * @param start Search start offset. The first time
 	 * @param end
 	 * @return
 	 */

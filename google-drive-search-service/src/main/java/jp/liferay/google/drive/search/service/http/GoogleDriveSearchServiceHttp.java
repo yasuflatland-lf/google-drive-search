@@ -148,12 +148,39 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	public static com.liferay.portal.kernel.search.Hits search(
+	public static boolean isAnyGoogleDrive(HttpPrincipal httpPrincipal,
+		long scopeGroupId) {
+		try {
+			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
+					"isAnyGoogleDrive", _isAnyGoogleDriveParameterTypes3);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey,
+					scopeGroupId);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return ((Boolean)returnObj).booleanValue();
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static com.liferay.portal.kernel.json.JSONObject search(
 		HttpPrincipal httpPrincipal, long repositoryId, String keywords,
 		int start, int end) {
 		try {
 			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"search", _searchParameterTypes3);
+					"search", _searchParameterTypes5);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey,
 					repositoryId, keywords, start, end);
@@ -167,7 +194,7 @@ public class GoogleDriveSearchServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return (com.liferay.portal.kernel.search.Hits)returnObj;
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -176,13 +203,13 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	public static com.liferay.portal.kernel.search.Hits mergeHits(
+	public static com.liferay.portal.kernel.json.JSONObject mergeHits(
 		HttpPrincipal httpPrincipal,
 		java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
 		long searchStartTime) {
 		try {
 			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"mergeHits", _mergeHitsParameterTypes4);
+					"mergeHits", _mergeHitsParameterTypes6);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey,
 					multiHits, searchStartTime);
@@ -196,7 +223,7 @@ public class GoogleDriveSearchServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return (com.liferay.portal.kernel.search.Hits)returnObj;
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -205,12 +232,12 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	public static com.liferay.portal.kernel.search.Hits search(
+	public static com.liferay.portal.kernel.json.JSONObject search(
 		HttpPrincipal httpPrincipal, long[] repositoryIds, String keyword,
 		int start, int end) {
 		try {
 			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"search", _searchParameterTypes5);
+					"search", _searchParameterTypes7);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey,
 					repositoryIds, keyword, start, end);
@@ -224,7 +251,7 @@ public class GoogleDriveSearchServiceHttp {
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
 
-			return (com.liferay.portal.kernel.search.Hits)returnObj;
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -243,13 +270,16 @@ public class GoogleDriveSearchServiceHttp {
 	private static final Class<?>[] _isGoogleDriveParameterTypes2 = new Class[] {
 			long.class
 		};
-	private static final Class<?>[] _searchParameterTypes3 = new Class[] {
-			long.class, String.class, int.class, int.class
-		};
-	private static final Class<?>[] _mergeHitsParameterTypes4 = new Class[] {
-			java.util.List.class, long.class
+	private static final Class<?>[] _isAnyGoogleDriveParameterTypes3 = new Class[] {
+			long.class
 		};
 	private static final Class<?>[] _searchParameterTypes5 = new Class[] {
+			long.class, String.class, int.class, int.class
+		};
+	private static final Class<?>[] _mergeHitsParameterTypes6 = new Class[] {
+			java.util.List.class, long.class
+		};
+	private static final Class<?>[] _searchParameterTypes7 = new Class[] {
 			long[].class, String.class, int.class, int.class
 		};
 }

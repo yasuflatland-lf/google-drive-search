@@ -4,3 +4,4 @@ target/
 .settings
 google-drive-search-api/bin
 google-drive-search-service/bin
+google-drive-fragment-global-search/bin
