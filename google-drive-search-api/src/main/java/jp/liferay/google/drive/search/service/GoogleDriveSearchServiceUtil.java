@@ -141,6 +141,20 @@ public class GoogleDriveSearchServiceUtil {
 		return getService().search(repositoryIds, keyword, start, end);
 	}
 
+	/**
+	* Search by Scope Group ID
+	*
+	* @param scopeGroupId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	public static com.liferay.portal.kernel.json.JSONObject searchByScopeId(
+		long scopeGroupId, String keywords, int start, int end) {
+		return getService().searchByScopeId(scopeGroupId, keywords, start, end);
+	}
+
 	public static GoogleDriveSearchService getService() {
 		return _serviceTracker.getService();
 	}

@@ -2,6 +2,3 @@ Bundle-Name: google-drive-fragment-global-search
 Bundle-SymbolicName: google.drive.fragment.global.search
 Bundle-Version: 1.0.0
 Fragment-Host: com.liferay.portal.search.web;bundle-version="[2.0.0,3.0.0)"
-Import-Package:\
-	\
-	*

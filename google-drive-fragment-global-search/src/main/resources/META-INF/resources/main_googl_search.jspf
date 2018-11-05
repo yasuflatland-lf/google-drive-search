@@ -1,21 +1,36 @@
-		<div class="list-group">
-		    <a aria-expanded="false" class="collapsed list-group-heading" data-toggle="collapse" href="#<portlet:namespace />googleDriveSearchTab">
-				<liferay-ui:icon
-					iconCssClass="glyphicon-cloud"
-					label="<%= true %>"
-					linkCssClass="btn btn-default"
-					message="Search results from Google Drive"
-					url=''
-				/>
-		    </a>
-		    <div class="collapse" id="<portlet:namespace />googleDriveSearchTab">
-		        <ul class="display-style-descriptive tabular-list-group" id="<portlet:namespace />googleSearchResults">
-		        </ul>
-				<div class="loading-icon linear loading-icon-lg"></div>
-		    </div>
-		</div>
-		
-<script type="text/html" id="<portlet:namespace />search_results">
+
+<%
+//Check if there are any Google Drive Repositories resigered.
+boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDrive(themeDisplay.getScopeGroupId());
+%>
+<c:if test="<%= isGoogleDriveRepositories %>">
+	<div class="panel panel-default" >
+	    <div class="panel-heading">
+	        <div class="panel-title">
+				<a aria-expanded="false" data-toggle="collapse" href="#<portlet:namespace />googleDriveSearchTab">
+					<liferay-ui:icon
+						iconCssClass="glyphicon-cloud"
+						label="<%= true %>"
+						linkCssClass="btn btn-default"
+						message="Search results from Google Drive"
+						url=''
+					/>
+			    </a>
+			 </div>
+	    </div>
+	    <div class="panel-body" id="<portlet:namespace />seachPanel">
+			<div class="loading-icon linear loading-icon-lg" id="<portlet:namespace />googleSearchLoader"></div>
+			<div class="text-center text-muted" style="display:none;" id="<portlet:namespace />noResults">
+				<liferay-ui:message arguments="<%= searchDisplayContext.getKeywords() %>" key="no-results-were-found-that-matched-the-keywords-x" translateArguments="<%= false %>" />
+			</div>
+	    </div>
+	</div>
+	<div class="search-facet" style="display:none;" id="<portlet:namespace />googleDriveSearchTab">
+		<ul class="display-style-descriptive tabular-list-group no-borders" id="<portlet:namespace />googleSearchResults">
+		</ul>
+	</div>
+
+<script type="text/html" id="<portlet:namespace />searchResultsTmpl">
     <li class="list-group-item" data-qa-id="row">
         <div class=" list-group-item-field">
             <div class="user-icon-color-3 user-icon-lg user-icon user-icon-info">
@@ -38,23 +53,54 @@
     </li>
 
 </script>
-		
-<aui:script use="aui-base">
-// Convert bracket for Lodash template to avoid overraping jsp tag.
-_.templateSettings = {
-    interpolate: /\<\@\=(.+?)\@\>/gim,
-    evaluate: /\<\@([\s\S]+?)\@\>/gim,
-    escape: /\<\@\-(.+?)\@\>/gim
-};
 
-	Liferay.Service(
-	  '/gd.googledrivesearch/get-accessible-repositories',
-	  {
-	    scopeGroupId: <%= String.valueOf(themeDisplay.getScopeGroupId())%>
-	  },
-	  function(obj) {
-	    console.log(obj);
-	  }
-	);
 
+<aui:script use="aui-base" >
+    $(window).load(function () {
+        var dfd = $.Deferred();
+
+        dfd.then(function () {
+            return Liferay.Service(
+                '/gd.googledrivesearch/search-by-scope-id', {
+                    scopeGroupId: <%= String.valueOf(themeDisplay.getScopeGroupId())%>,
+                    keywords: '<%= searchDisplayContext.getKeywords() %>',
+                    start: <%= searchDisplayContext.getSearchContext().getStart() %>,
+                    end: <%= searchDisplayContext.getSearchContext().getEnd() %>
+                },
+                function (obj) {
+					if(0 == Object.keys(obj).length) {
+						$("#<portlet:namespace />googleDriveSearchTab").hide();
+						$("#<portlet:namespace />noResults").show();
+						return;
+				   	}     
+				   	         
+					//Load Template
+					var tmpl = _.template($('#<portlet:namespace />searchResultsTmpl').html());
+					var listAll = "";
+					_.map(obj,function(data) {
+						listAll +=
+						tmpl(
+						  {
+							url:data.url,
+							title:data.title,
+							description:""
+						  }
+						);
+					});
+					var googleSearchResultsObj = $('#<portlet:namespace />googleSearchResults')
+					googleSearchResultsObj.empty();
+					googleSearchResultsObj.append(listAll);
+					
+					$("#<portlet:namespace />seachPanel").hide();
+					$("#<portlet:namespace />googleDriveSearchTab").show();
+                }
+            ).promise();
+        }).done(function () {
+            $("#<portlet:namespace />googleSearchLoader").hide();
+        });
+        dfd.resolve();
+
+    });
 </aui:script>
+
+</c:if>		

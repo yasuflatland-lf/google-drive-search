@@ -221,6 +221,26 @@ public class GoogleDriveSearchServiceImpl
 	}
 
 	/**
+	 * Search by Scope Group ID
+	 * 
+	 * @param scopeGroupId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public JSONObject searchByScopeId(
+		long scopeGroupId, String keywords, int start, int end) {
+
+		Hits hits = googleDriveSearchLocalService.searchByScopeId(
+			scopeGroupId, keywords, start, end);
+
+		List<Document> documents = hits.toList();
+
+		return convertDocumentToJson(documents);
+	}
+
+	/**
 	 * TODO: this need to be replaced by GoogleDriveConstants.THUMBNAIL_SRC,
 	 */
 	protected static final String THUMBNAIL_SRC = "thumbnailSrc";

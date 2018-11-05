@@ -231,6 +231,29 @@ public class GoogleDriveSearchLocalServiceImpl
 		return mergeHits(hits, searchStartTime);
 	}
 
+	/**
+	 * Search by Scope Group ID
+	 * 
+	 * @param scopeGroupId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public Hits searchByScopeId(
+		long scopeGroupId, String keywords, int start, int end) {
+
+		long[] repositoryIds;
+		try {
+			repositoryIds = getAccessibleRepositoryIds(scopeGroupId);
+			return search(repositoryIds, keywords, start, end);
+		}
+		catch (PortalException e) {
+			_log.error("Error to search with a scope group ID : ",e);
+			return new HitsImpl();
+		}
+	}
+
 	@ServiceReference(type = RepositoryLocalService.class)
 	protected RepositoryLocalService repositoryLocalService;
 

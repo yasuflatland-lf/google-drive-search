@@ -1,16 +1,16 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="jp.liferay.google.drive.search.service.*" %>
 
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+<%
+// get the service from the render request attributes
+GoogleDriveSearchLocalService googleDriveSearchLocalService = (GoogleDriveSearchLocalService)
+  renderRequest.getAttribute("GoogleDriveSearchLocalService");
+%>
 
-<%@ taglib uri="http://liferay.com/tld/aui" prefix="aui" %><%@
-taglib uri="http://liferay.com/tld/frontend" prefix="liferay-frontend" %><%@
-taglib uri="http://liferay.com/tld/portlet" prefix="liferay-portlet" %><%@
-taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
-taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %><%@
-taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
-
-<liferay-frontend:defineObjects />
-
-<liferay-theme:defineObjects />
-
-<portlet:defineObjects />
+<aui:script use="aui-base">
+	// Convert bracket for Lodash template to avoid overraping jsp tag.
+	_.templateSettings = {
+	    interpolate: /\<\@\=(.+?)\@\>/gim,
+	    evaluate: /\<\@([\s\S]+?)\@\>/gim,
+	    escape: /\<\@\-(.+?)\@\>/gim
+	};
+</aui:script>

@@ -141,6 +141,22 @@ public class GoogleDriveSearchServiceWrapper implements GoogleDriveSearchService
 			end);
 	}
 
+	/**
+	* Search by Scope Group ID
+	*
+	* @param scopeGroupId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	@Override
+	public com.liferay.portal.kernel.json.JSONObject searchByScopeId(
+		long scopeGroupId, String keywords, int start, int end) {
+		return _googleDriveSearchService.searchByScopeId(scopeGroupId,
+			keywords, start, end);
+	}
+
 	@Override
 	public GoogleDriveSearchService getWrappedService() {
 		return _googleDriveSearchService;

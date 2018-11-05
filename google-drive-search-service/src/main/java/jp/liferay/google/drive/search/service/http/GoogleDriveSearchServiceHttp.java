@@ -260,6 +260,34 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
+	public static com.liferay.portal.kernel.json.JSONObject searchByScopeId(
+		HttpPrincipal httpPrincipal, long scopeGroupId, String keywords,
+		int start, int end) {
+		try {
+			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
+					"searchByScopeId", _searchByScopeIdParameterTypes8);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey,
+					scopeGroupId, keywords, start, end);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(GoogleDriveSearchServiceHttp.class);
 	private static final Class<?>[] _getAccessibleRepositoryIdsParameterTypes0 = new Class[] {
 			long.class
@@ -281,5 +309,8 @@ public class GoogleDriveSearchServiceHttp {
 		};
 	private static final Class<?>[] _searchParameterTypes7 = new Class[] {
 			long[].class, String.class, int.class, int.class
+		};
+	private static final Class<?>[] _searchByScopeIdParameterTypes8 = new Class[] {
+			long.class, String.class, int.class, int.class
 		};
 }

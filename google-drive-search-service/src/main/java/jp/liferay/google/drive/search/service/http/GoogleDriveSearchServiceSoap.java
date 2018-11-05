@@ -218,5 +218,29 @@ public class GoogleDriveSearchServiceSoap {
 		}
 	}
 
+	/**
+	* Search by Scope Group ID
+	*
+	* @param scopeGroupId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	public static String searchByScopeId(long scopeGroupId, String keywords,
+		int start, int end) throws RemoteException {
+		try {
+			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.searchByScopeId(scopeGroupId,
+					keywords, start, end);
+
+			return returnValue.toString();
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	private static Log _log = LogFactoryUtil.getLog(GoogleDriveSearchServiceSoap.class);
 }

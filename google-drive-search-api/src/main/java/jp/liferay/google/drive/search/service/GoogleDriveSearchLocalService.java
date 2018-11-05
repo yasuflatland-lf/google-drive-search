@@ -297,6 +297,19 @@ public interface GoogleDriveSearchLocalService extends BaseLocalService,
 	public Hits search(long[] repositoryIds, String keyword, int start, int end);
 
 	/**
+	* Search by Scope Group ID
+	*
+	* @param scopeGroupId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public Hits searchByScopeId(long scopeGroupId, String keywords, int start,
+		int end);
+
+	/**
 	* Updates the google drive search in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
 	* @param googleDriveSearch the google drive search

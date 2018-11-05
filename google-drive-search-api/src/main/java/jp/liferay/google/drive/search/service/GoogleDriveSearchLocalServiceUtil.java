@@ -327,6 +327,20 @@ public class GoogleDriveSearchLocalServiceUtil {
 	}
 
 	/**
+	* Search by Scope Group ID
+	*
+	* @param scopeGroupId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	public static com.liferay.portal.kernel.search.Hits searchByScopeId(
+		long scopeGroupId, String keywords, int start, int end) {
+		return getService().searchByScopeId(scopeGroupId, keywords, start, end);
+	}
+
+	/**
 	* Updates the google drive search in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
 	*
 	* @param googleDriveSearch the google drive search

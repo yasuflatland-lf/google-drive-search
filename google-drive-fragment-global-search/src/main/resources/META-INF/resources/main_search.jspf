@@ -78,7 +78,6 @@ Hits hits = searchDisplayContext.getHits();
 	<aui:col cssClass="result" first="<%= !searchDisplayContext.isShowMenu() %>" span="<%= 9 %>">
 		<%@ include file="/main_search_suggest.jspf" %>
 		<%@ include file="/main_googl_search.jspf" %>
-		
 
 		<liferay-ui:search-container
 			id="search"

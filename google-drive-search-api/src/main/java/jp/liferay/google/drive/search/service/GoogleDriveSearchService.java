@@ -136,4 +136,17 @@ public interface GoogleDriveSearchService extends BaseService {
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public JSONObject search(long[] repositoryIds, String keyword, int start,
 		int end);
+
+	/**
+	* Search by Scope Group ID
+	*
+	* @param scopeGroupId
+	* @param keywords
+	* @param start
+	* @param end
+	* @return
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public JSONObject searchByScopeId(long scopeGroupId, String keywords,
+		int start, int end);
 }
