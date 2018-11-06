@@ -25,7 +25,7 @@ boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDri
 			</div>
 	    </div>
 	</div>
-	<div class="search-facet" style="display:none;" id="<portlet:namespace />googleDriveSearchTab">
+	<div class="search-facet collapse in" style="display:none;" id="<portlet:namespace />googleDriveSearchTab">
 		<ul class="display-style-descriptive tabular-list-group no-borders" id="<portlet:namespace />googleSearchResults">
 		</ul>
 	</div>
