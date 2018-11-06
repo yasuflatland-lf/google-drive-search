@@ -1,4 +1,5 @@
 <%@ page import="jp.liferay.google.drive.search.service.*" %>
+<%@ page import="jp.liferay.google.drive.repository.constants.GoogleDriveConstants" %>
 
 <%
 // get the service from the render request attributes

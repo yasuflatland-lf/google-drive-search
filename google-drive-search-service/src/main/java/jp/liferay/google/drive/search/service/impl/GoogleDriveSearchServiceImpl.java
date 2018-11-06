@@ -93,12 +93,12 @@ public class GoogleDriveSearchServiceImpl
 				Field.ENTRY_CLASS_PK, repositroy.getDlFolderId());
 			itemJSONObject.put(Field.TITLE, repositroy.getDescription());
 
-			repoJSONObject.put(Field.ENTRY_CLASS_PK, itemJSONObject);
+			repoJSONObject.put(String.valueOf(repositroy.getDlFolderId()), itemJSONObject);
 		}
 
 		return repoJSONObject;
 	}
-
+	
 	/**
 	 * Check if it's Google Drive Repository
 	 * 

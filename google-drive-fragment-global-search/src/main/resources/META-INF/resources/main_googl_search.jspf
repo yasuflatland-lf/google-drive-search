@@ -48,7 +48,7 @@ boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDri
         <div class=" list-group-item-content">
             <h5> <a href="<@= url @>">
                     <strong><span class="highlight"><@= title @></span></strong> </a> </h5>
-            <h6 class="text-default"> Google Drive - <@= description @></h6>
+            <h6 class="text-default"> Google Drive Repository : <@= description @></h6>
         </div>
     </li>
 
@@ -58,46 +58,58 @@ boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDri
 <aui:script use="aui-base" >
     $(window).load(function () {
         var dfd = $.Deferred();
-
+		var repositories;
+		
         dfd.then(function () {
-            return Liferay.Service(
-                '/gd.googledrivesearch/search-by-scope-id', {
-                    scopeGroupId: <%= String.valueOf(themeDisplay.getScopeGroupId())%>,
-                    keywords: '<%= searchDisplayContext.getKeywords() %>',
-                    start: <%= searchDisplayContext.getSearchContext().getStart() %>,
-                    end: <%= searchDisplayContext.getSearchContext().getEnd() %>
-                },
-                function (obj) {
-					if(0 == Object.keys(obj).length) {
-						$("#<portlet:namespace />googleDriveSearchTab").hide();
-						$("#<portlet:namespace />noResults").show();
-						return;
-				   	}     
-				   	         
-					//Load Template
-					var tmpl = _.template($('#<portlet:namespace />searchResultsTmpl').html());
-					var listAll = "";
-					_.map(obj,function(data) {
-						listAll +=
-						tmpl(
-						  {
-							url:data.url,
-							title:data.title,
-							description:""
-						  }
-						);
-					});
-					var googleSearchResultsObj = $('#<portlet:namespace />googleSearchResults')
-					googleSearchResultsObj.empty();
-					googleSearchResultsObj.append(listAll);
-					
-					$("#<portlet:namespace />seachPanel").hide();
-					$("#<portlet:namespace />googleDriveSearchTab").show();
-                }
-            ).promise();
-        }).done(function () {
-            $("#<portlet:namespace />googleSearchLoader").hide();
-        });
+                Liferay.Service(
+                    '/gd.googledrivesearch/get-accessible-repositories', {
+                        scopeGroupId: <%= String.valueOf(themeDisplay.getScopeGroupId())%>
+                    },
+                    function (obj) {
+                        repositories = obj;
+                    }
+                );
+            })
+            .then(function () {
+                return Liferay.Service(
+                    '/gd.googledrivesearch/search-by-scope-id', {
+                        scopeGroupId: <%= String.valueOf(themeDisplay.getScopeGroupId())%>,
+                        keywords: '<%= searchDisplayContext.getKeywords() %>',
+                        start: <%= searchDisplayContext.getSearchContext().getStart() %>,
+                        end: <%= searchDisplayContext.getSearchContext().getEnd() %>
+                    },
+                    function (obj) {
+                        if (0 == Object.keys(obj).length) {
+                            $("#<portlet:namespace />googleDriveSearchTab").hide();
+                            $("#<portlet:namespace />noResults").show();
+                            return;
+                        }
+
+                        //Load Template
+                        var tmpl = _.template($('#<portlet:namespace />searchResultsTmpl').html());
+                        var listAll = "";
+                        _.map(obj, function (data) {
+							var description = _.find(repositories, function(repository) { 
+								return repositories.entryClassPK === data.<%=GoogleDriveConstants.REPOSITORY_ID %>; 
+							});
+                            listAll +=
+                                tmpl({
+                                    url: data.url,
+                                    title: data.title,
+                                    description: description.title
+                                });
+                        });
+                        var googleSearchResultsObj = $('#<portlet:namespace />googleSearchResults')
+                        googleSearchResultsObj.empty();
+                        googleSearchResultsObj.append(listAll);
+
+                        $("#<portlet:namespace />seachPanel").hide();
+                        $("#<portlet:namespace />googleDriveSearchTab").show();
+                    }
+                ).promise();
+            }).done(function () {
+                $("#<portlet:namespace />googleSearchLoader").hide();
+            });
         dfd.resolve();
 
     });
