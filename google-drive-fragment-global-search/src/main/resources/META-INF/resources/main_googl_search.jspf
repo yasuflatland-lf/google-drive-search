@@ -54,7 +54,6 @@ boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDri
 
 </script>
 
-
 <aui:script use="aui-base" >
     $(window).load(function () {
         var dfd = $.Deferred();
@@ -92,7 +91,7 @@ boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDri
 							var description = _.find(repositories, function(repository) { 
 								return (repository.repositoryId == data.repositoryId) ? true : false; 
 							});
-console.log(description);                        
+
                             listAll +=
                                 tmpl({
                                     url: data.url,
