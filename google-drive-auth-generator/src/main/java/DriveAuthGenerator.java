@@ -38,7 +38,7 @@ import java.util.List;
 public class DriveAuthGenerator {
 
 	private static final String APPLICATION_NAME =
-		"Google Drive API Java Quickstart";
+		"Google Drive API Auth Generator";
 	private static final JsonFactory JSON_FACTORY =
 		JacksonFactory.getDefaultInstance();
 
@@ -60,7 +60,7 @@ public class DriveAuthGenerator {
 	private static Credential getCredentials(
 		final NetHttpTransport HTTP_TRANSPORT)
 		throws IOException {
-
+		
 		// Load client secrets.
 		InputStream in =
 			DriveAuthGenerator.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
@@ -104,7 +104,7 @@ public class DriveAuthGenerator {
 			System.out.println("No files found.");
 		}
 		else {
-			System.out.println("Found Files in the drive:");
+			System.out.println("Found Files in the drive :");
 			for (File file : files) {
 				System.out.printf("%s (%s)\n", file.getName(), file.getId());
 			}

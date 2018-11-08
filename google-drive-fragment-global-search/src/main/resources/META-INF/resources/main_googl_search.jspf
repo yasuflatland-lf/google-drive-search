@@ -26,7 +26,7 @@ boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDri
 	    </div>
 	</div>
 	<div class="search-facet collapse in" style="display:none;" id="<portlet:namespace />googleDriveSearchTab">
-		<ul class="display-style-descriptive tabular-list-group no-borders" id="<portlet:namespace />googleSearchResults">
+		<ul class="display-style-descriptive tabular-list-group" id="<portlet:namespace />googleSearchResults">
 		</ul>
 	</div>
 
@@ -90,8 +90,9 @@ boolean isGoogleDriveRepositories = googleDriveSearchLocalService.isAnyGoogleDri
                         var listAll = "";
                         _.map(obj, function (data) {
 							var description = _.find(repositories, function(repository) { 
-								return repositories.entryClassPK === data.<%=GoogleDriveConstants.REPOSITORY_ID %>; 
+								return (repository.repositoryId == data.repositoryId) ? true : false; 
 							});
+console.log(description);                        
                             listAll +=
                                 tmpl({
                                     url: data.url,

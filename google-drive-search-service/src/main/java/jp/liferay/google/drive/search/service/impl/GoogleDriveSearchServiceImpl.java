@@ -90,15 +90,18 @@ public class GoogleDriveSearchServiceImpl
 		for (Repository repositroy : repositories) {
 			JSONObject itemJSONObject = JSONFactoryUtil.createJSONObject();
 			itemJSONObject.put(
+				REPOSITORY_ID, repositroy.getRepositoryId());
+			itemJSONObject.put(
 				Field.ENTRY_CLASS_PK, repositroy.getDlFolderId());
 			itemJSONObject.put(Field.TITLE, repositroy.getDescription());
 
-			repoJSONObject.put(String.valueOf(repositroy.getDlFolderId()), itemJSONObject);
+			repoJSONObject.put(
+				String.valueOf(repositroy.getDlFolderId()), itemJSONObject);
 		}
 
 		return repoJSONObject;
 	}
-	
+
 	/**
 	 * Check if it's Google Drive Repository
 	 * 
@@ -149,6 +152,7 @@ public class GoogleDriveSearchServiceImpl
 			documentJSONObject.put(Field.TITLE, document.get(Field.TITLE));
 			documentJSONObject.put(
 				Field.ENTRY_CLASS_PK, document.get(Field.ENTRY_CLASS_PK));
+			documentJSONObject.put(REPOSITORY_ID, document.get(REPOSITORY_ID));
 			documentJSONObject.put(THUMBNAIL_SRC, document.get(THUMBNAIL_SRC));
 			documentJSONObject.put(Field.URL, document.get(Field.URL));
 			documentJSONObject.put(MIME_TYPE, document.get(MIME_TYPE));
@@ -244,6 +248,12 @@ public class GoogleDriveSearchServiceImpl
 	 * TODO: this need to be replaced by GoogleDriveConstants.THUMBNAIL_SRC,
 	 */
 	protected static final String THUMBNAIL_SRC = "thumbnailSrc";
+
+	/**
+	 * TODO: Repository Id of Google Drive Assigned :
+	 * GoogleDriveConstants.REPOSITORY_ID
+	 */
+	public static final String REPOSITORY_ID = "repositoryId";
 
 	protected static final String MIME_TYPE = "mimeType";
 
