@@ -5,3 +5,6 @@ target/
 google-drive-search-api/bin
 google-drive-search-service/bin
 google-drive-fragment-global-search/bin
+google-drive-auth-generator/.vscode
+google-drive-auth-generator/bin
+credentials.json
