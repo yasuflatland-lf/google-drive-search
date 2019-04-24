@@ -17,6 +17,7 @@
 <%
 Hits hits = searchDisplayContext.getHits();
 %>
+<h1>Override</h1>
 
 <aui:row cssClass='<%= "search-layout" + (searchDisplayContext.isShowMenu() ? " menu-column" : StringPool.BLANK) %>'>
 	<c:if test="<%= searchDisplayContext.isShowMenu() %>">
@@ -77,7 +78,7 @@ Hits hits = searchDisplayContext.getHits();
 
 	<aui:col cssClass="result" first="<%= !searchDisplayContext.isShowMenu() %>" span="<%= 9 %>">
 		<%@ include file="/main_search_suggest.jspf" %>
-		<%@ include file="/main_googl_search.jspf" %>
+		<%@ include file="/main_google_search.jspf" %>
 
 		<liferay-ui:search-container
 			id="search"
@@ -97,6 +98,7 @@ Hits hits = searchDisplayContext.getHits();
 				searchResultSummaryDisplayBuilder.setAssetEntryLocalService(com.liferay.asset.kernel.service.AssetEntryLocalServiceUtil.getService());
 				searchResultSummaryDisplayBuilder.setCurrentURL(currentURL);
 				searchResultSummaryDisplayBuilder.setDocument(document);
+				searchResultSummaryDisplayBuilder.setFastDateFormatFactory(com.liferay.portal.kernel.util.FastDateFormatFactoryUtil.getFastDateFormatFactory());
 				searchResultSummaryDisplayBuilder.setHighlightEnabled(searchDisplayContext.isHighlightEnabled());
 				searchResultSummaryDisplayBuilder.setLanguage(com.liferay.portal.kernel.language.LanguageUtil.getLanguage());
 				searchResultSummaryDisplayBuilder.setLocale(locale);
@@ -123,18 +125,12 @@ Hits hits = searchDisplayContext.getHits();
 				type="more"
 			/>
 
-			<c:if test="<%= searchDisplayContext.isDisplayMainQuery() && (hits.getQuery() != null) %>">
-				<table class="full-query">
-					<tr>
-						<td valign="top">
-							<div class="container">
-								<code>
-									<%= HtmlUtil.escape(IndexSearcherHelperUtil.getQueryString(searchDisplayContext.getSearchContext(), hits.getQuery())) %>
-								</code>
-							</div>
-						</td>
-					</tr>
-				</table>
+			<c:if test="<%= searchDisplayContext.isDisplayMainQuery() && (searchDisplayContext.getQueryString() != null) %>">
+				<div class="full-query">
+					<code>
+						<%= HtmlUtil.escape(IndexSearcherHelperUtil.getQueryString(searchDisplayContext.getSearchContext(), hits.getQuery())) %>
+					</code>
+				</div>
 			</c:if>
 		</liferay-ui:search-container>
 	</aui:col>

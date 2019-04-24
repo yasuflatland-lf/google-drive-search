@@ -1,5 +1,5 @@
 Bundle-Name: google-drive-fragments-search
 Bundle-SymbolicName: google.drive.fragments.search
 Bundle-Version: 1.0.0
-Fragment-Host: com.liferay.document.library.web;bundle-version="[2.0.0,3.0.0)"
+Fragment-Host: com.liferay.document.library.web;bundle-version="[3.0.0,4.0.0)"
 -sources: true

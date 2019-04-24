@@ -20,23 +20,23 @@ import com.liferay.portal.kernel.model.CacheModel;
 import com.liferay.portal.kernel.util.HashUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 
-import jp.liferay.google.drive.search.model.GoogleDriveSearch;
-
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
+import jp.liferay.google.drive.search.model.GoogleDriveSearch;
+
 /**
  * The cache model class for representing GoogleDriveSearch in entity cache.
  *
  * @author Brian Wing Shun Chan
- * @see GoogleDriveSearch
  * @generated
  */
 @ProviderType
-public class GoogleDriveSearchCacheModel implements CacheModel<GoogleDriveSearch>,
-	Externalizable {
+public class GoogleDriveSearchCacheModel
+	implements CacheModel<GoogleDriveSearch>, Externalizable {
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
@@ -47,7 +47,8 @@ public class GoogleDriveSearchCacheModel implements CacheModel<GoogleDriveSearch
 			return false;
 		}
 
-		GoogleDriveSearchCacheModel googleDriveSearchCacheModel = (GoogleDriveSearchCacheModel)obj;
+		GoogleDriveSearchCacheModel googleDriveSearchCacheModel =
+			(GoogleDriveSearchCacheModel)obj;
 
 		if (gdId == googleDriveSearchCacheModel.gdId) {
 			return true;
@@ -63,27 +64,18 @@ public class GoogleDriveSearchCacheModel implements CacheModel<GoogleDriveSearch
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(5);
+		StringBundler sb = new StringBundler(3);
 
-		sb.append("{uuid=");
-		sb.append(uuid);
-		sb.append(", gdId=");
+		sb.append("{gdId=");
 		sb.append(gdId);
-		sb.append("}");
 
 		return sb.toString();
 	}
 
 	@Override
 	public GoogleDriveSearch toEntityModel() {
-		GoogleDriveSearchImpl googleDriveSearchImpl = new GoogleDriveSearchImpl();
-
-		if (uuid == null) {
-			googleDriveSearchImpl.setUuid("");
-		}
-		else {
-			googleDriveSearchImpl.setUuid(uuid);
-		}
+		GoogleDriveSearchImpl googleDriveSearchImpl =
+			new GoogleDriveSearchImpl();
 
 		googleDriveSearchImpl.setGdId(gdId);
 
@@ -94,24 +86,14 @@ public class GoogleDriveSearchCacheModel implements CacheModel<GoogleDriveSearch
 
 	@Override
 	public void readExternal(ObjectInput objectInput) throws IOException {
-		uuid = objectInput.readUTF();
-
 		gdId = objectInput.readLong();
 	}
 
 	@Override
-	public void writeExternal(ObjectOutput objectOutput)
-		throws IOException {
-		if (uuid == null) {
-			objectOutput.writeUTF("");
-		}
-		else {
-			objectOutput.writeUTF(uuid);
-		}
-
+	public void writeExternal(ObjectOutput objectOutput) throws IOException {
 		objectOutput.writeLong(gdId);
 	}
 
-	public String uuid;
 	public long gdId;
+
 }

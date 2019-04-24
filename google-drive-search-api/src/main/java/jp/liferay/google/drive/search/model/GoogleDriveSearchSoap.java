@@ -25,15 +25,14 @@ import java.util.List;
  * This class is used by SOAP remote services, specifically {@link jp.liferay.google.drive.search.service.http.GoogleDriveSearchServiceSoap}.
  *
  * @author Brian Wing Shun Chan
- * @see jp.liferay.google.drive.search.service.http.GoogleDriveSearchServiceSoap
  * @generated
  */
 @ProviderType
 public class GoogleDriveSearchSoap implements Serializable {
+
 	public static GoogleDriveSearchSoap toSoapModel(GoogleDriveSearch model) {
 		GoogleDriveSearchSoap soapModel = new GoogleDriveSearchSoap();
 
-		soapModel.setUuid(model.getUuid());
 		soapModel.setGdId(model.getGdId());
 
 		return soapModel;
@@ -41,7 +40,9 @@ public class GoogleDriveSearchSoap implements Serializable {
 
 	public static GoogleDriveSearchSoap[] toSoapModels(
 		GoogleDriveSearch[] models) {
-		GoogleDriveSearchSoap[] soapModels = new GoogleDriveSearchSoap[models.length];
+
+		GoogleDriveSearchSoap[] soapModels =
+			new GoogleDriveSearchSoap[models.length];
 
 		for (int i = 0; i < models.length; i++) {
 			soapModels[i] = toSoapModel(models[i]);
@@ -52,10 +53,12 @@ public class GoogleDriveSearchSoap implements Serializable {
 
 	public static GoogleDriveSearchSoap[][] toSoapModels(
 		GoogleDriveSearch[][] models) {
+
 		GoogleDriveSearchSoap[][] soapModels = null;
 
 		if (models.length > 0) {
-			soapModels = new GoogleDriveSearchSoap[models.length][models[0].length];
+			soapModels =
+				new GoogleDriveSearchSoap[models.length][models[0].length];
 		}
 		else {
 			soapModels = new GoogleDriveSearchSoap[0][0];
@@ -70,7 +73,9 @@ public class GoogleDriveSearchSoap implements Serializable {
 
 	public static GoogleDriveSearchSoap[] toSoapModels(
 		List<GoogleDriveSearch> models) {
-		List<GoogleDriveSearchSoap> soapModels = new ArrayList<GoogleDriveSearchSoap>(models.size());
+
+		List<GoogleDriveSearchSoap> soapModels =
+			new ArrayList<GoogleDriveSearchSoap>(models.size());
 
 		for (GoogleDriveSearch model : models) {
 			soapModels.add(toSoapModel(model));
@@ -90,14 +95,6 @@ public class GoogleDriveSearchSoap implements Serializable {
 		setGdId(pk);
 	}
 
-	public String getUuid() {
-		return _uuid;
-	}
-
-	public void setUuid(String uuid) {
-		_uuid = uuid;
-	}
-
 	public long getGdId() {
 		return _gdId;
 	}
@@ -106,6 +103,6 @@ public class GoogleDriveSearchSoap implements Serializable {
 		_gdId = gdId;
 	}
 
-	private String _uuid;
 	private long _gdId;
+
 }

@@ -17,7 +17,6 @@ package jp.liferay.google.drive.search.model;
 import aQute.bnd.annotation.ProviderType;
 
 import com.liferay.expando.kernel.model.ExpandoBridge;
-
 import com.liferay.portal.kernel.model.ModelWrapper;
 import com.liferay.portal.kernel.service.ServiceContext;
 
@@ -37,8 +36,9 @@ import java.util.Objects;
  * @generated
  */
 @ProviderType
-public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
-	ModelWrapper<GoogleDriveSearch> {
+public class GoogleDriveSearchWrapper
+	implements GoogleDriveSearch, ModelWrapper<GoogleDriveSearch> {
+
 	public GoogleDriveSearchWrapper(GoogleDriveSearch googleDriveSearch) {
 		_googleDriveSearch = googleDriveSearch;
 	}
@@ -57,7 +57,6 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	public Map<String, Object> getModelAttributes() {
 		Map<String, Object> attributes = new HashMap<String, Object>();
 
-		attributes.put("uuid", getUuid());
 		attributes.put("gdId", getGdId());
 
 		return attributes;
@@ -65,12 +64,6 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 
 	@Override
 	public void setModelAttributes(Map<String, Object> attributes) {
-		String uuid = (String)attributes.get("uuid");
-
-		if (uuid != null) {
-			setUuid(uuid);
-		}
-
 		Long gdId = (Long)attributes.get("gdId");
 
 		if (gdId != null) {
@@ -80,11 +73,15 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 
 	@Override
 	public Object clone() {
-		return new GoogleDriveSearchWrapper((GoogleDriveSearch)_googleDriveSearch.clone());
+		return new GoogleDriveSearchWrapper(
+			(GoogleDriveSearch)_googleDriveSearch.clone());
 	}
 
 	@Override
-	public int compareTo(GoogleDriveSearch googleDriveSearch) {
+	public int compareTo(
+		jp.liferay.google.drive.search.model.GoogleDriveSearch
+			googleDriveSearch) {
+
 		return _googleDriveSearch.compareTo(googleDriveSearch);
 	}
 
@@ -94,20 +91,20 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	}
 
 	/**
-	* Returns the gd ID of this google drive search.
-	*
-	* @return the gd ID of this google drive search
-	*/
+	 * Returns the gd ID of this google drive search.
+	 *
+	 * @return the gd ID of this google drive search
+	 */
 	@Override
 	public long getGdId() {
 		return _googleDriveSearch.getGdId();
 	}
 
 	/**
-	* Returns the primary key of this google drive search.
-	*
-	* @return the primary key of this google drive search
-	*/
+	 * Returns the primary key of this google drive search.
+	 *
+	 * @return the primary key of this google drive search
+	 */
 	@Override
 	public long getPrimaryKey() {
 		return _googleDriveSearch.getPrimaryKey();
@@ -116,16 +113,6 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	@Override
 	public Serializable getPrimaryKeyObj() {
 		return _googleDriveSearch.getPrimaryKeyObj();
-	}
-
-	/**
-	* Returns the uuid of this google drive search.
-	*
-	* @return the uuid of this google drive search
-	*/
-	@Override
-	public String getUuid() {
-		return _googleDriveSearch.getUuid();
 	}
 
 	@Override
@@ -161,6 +148,7 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	@Override
 	public void setExpandoBridgeAttributes(
 		com.liferay.portal.kernel.model.BaseModel<?> baseModel) {
+
 		_googleDriveSearch.setExpandoBridgeAttributes(baseModel);
 	}
 
@@ -175,10 +163,10 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	}
 
 	/**
-	* Sets the gd ID of this google drive search.
-	*
-	* @param gdId the gd ID of this google drive search
-	*/
+	 * Sets the gd ID of this google drive search.
+	 *
+	 * @param gdId the gd ID of this google drive search
+	 */
 	@Override
 	public void setGdId(long gdId) {
 		_googleDriveSearch.setGdId(gdId);
@@ -190,10 +178,10 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	}
 
 	/**
-	* Sets the primary key of this google drive search.
-	*
-	* @param primaryKey the primary key of this google drive search
-	*/
+	 * Sets the primary key of this google drive search.
+	 *
+	 * @param primaryKey the primary key of this google drive search
+	 */
 	@Override
 	public void setPrimaryKey(long primaryKey) {
 		_googleDriveSearch.setPrimaryKey(primaryKey);
@@ -204,24 +192,20 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 		_googleDriveSearch.setPrimaryKeyObj(primaryKeyObj);
 	}
 
-	/**
-	* Sets the uuid of this google drive search.
-	*
-	* @param uuid the uuid of this google drive search
-	*/
 	@Override
-	public void setUuid(String uuid) {
-		_googleDriveSearch.setUuid(uuid);
-	}
+	public com.liferay.portal.kernel.model.CacheModel
+		<jp.liferay.google.drive.search.model.GoogleDriveSearch>
+			toCacheModel() {
 
-	@Override
-	public com.liferay.portal.kernel.model.CacheModel<GoogleDriveSearch> toCacheModel() {
 		return _googleDriveSearch.toCacheModel();
 	}
 
 	@Override
-	public GoogleDriveSearch toEscapedModel() {
-		return new GoogleDriveSearchWrapper(_googleDriveSearch.toEscapedModel());
+	public jp.liferay.google.drive.search.model.GoogleDriveSearch
+		toEscapedModel() {
+
+		return new GoogleDriveSearchWrapper(
+			_googleDriveSearch.toEscapedModel());
 	}
 
 	@Override
@@ -230,8 +214,11 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	}
 
 	@Override
-	public GoogleDriveSearch toUnescapedModel() {
-		return new GoogleDriveSearchWrapper(_googleDriveSearch.toUnescapedModel());
+	public jp.liferay.google.drive.search.model.GoogleDriveSearch
+		toUnescapedModel() {
+
+		return new GoogleDriveSearchWrapper(
+			_googleDriveSearch.toUnescapedModel());
 	}
 
 	@Override
@@ -249,10 +236,13 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 			return false;
 		}
 
-		GoogleDriveSearchWrapper googleDriveSearchWrapper = (GoogleDriveSearchWrapper)obj;
+		GoogleDriveSearchWrapper googleDriveSearchWrapper =
+			(GoogleDriveSearchWrapper)obj;
 
-		if (Objects.equals(_googleDriveSearch,
-					googleDriveSearchWrapper._googleDriveSearch)) {
+		if (Objects.equals(
+				_googleDriveSearch,
+				googleDriveSearchWrapper._googleDriveSearch)) {
+
 			return true;
 		}
 
@@ -280,4 +270,5 @@ public class GoogleDriveSearchWrapper implements GoogleDriveSearch,
 	}
 
 	private final GoogleDriveSearch _googleDriveSearch;
+
 }

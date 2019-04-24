@@ -27,10 +27,11 @@ import jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil;
 
 /**
  * Provides the HTTP utility for the
- * {@link GoogleDriveSearchServiceUtil} service utility. The
+ * <code>GoogleDriveSearchServiceUtil</code> service
+ * utility. The
  * static methods of this class calls the same methods of the service utility.
  * However, the signatures are different because it requires an additional
- * {@link HttpPrincipal} parameter.
+ * <code>HttpPrincipal</code> parameter.
  *
  * <p>
  * The benefits of using the HTTP utility is that it is fast and allows for
@@ -49,22 +50,24 @@ import jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil;
  *
  * @author Brian Wing Shun Chan
  * @see GoogleDriveSearchServiceSoap
- * @see HttpPrincipal
- * @see GoogleDriveSearchServiceUtil
  * @generated
  */
 @ProviderType
 public class GoogleDriveSearchServiceHttp {
-	public static com.liferay.portal.kernel.json.JSONObject getAccessibleRepositoryIds(
-		HttpPrincipal httpPrincipal, long scopeGroupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"getAccessibleRepositoryIds",
-					_getAccessibleRepositoryIdsParameterTypes0);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					scopeGroupId);
+	public static com.liferay.portal.kernel.json.JSONObject
+			getAccessibleRepositoryIds(
+				HttpPrincipal httpPrincipal, long scopeGroupId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class,
+				"getAccessibleRepositoryIds",
+				_getAccessibleRepositoryIdsParameterTypes0);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, scopeGroupId);
 
 			Object returnObj = null;
 
@@ -72,11 +75,15 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
-					throw (com.liferay.portal.kernel.exception.PortalException)e;
+				if (e instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						e;
 				}
 
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -88,16 +95,18 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	public static com.liferay.portal.kernel.json.JSONObject getAccessibleRepositories(
-		HttpPrincipal httpPrincipal, long scopeGroupId)
+	public static com.liferay.portal.kernel.json.JSONObject
+			getAccessibleRepositories(
+				HttpPrincipal httpPrincipal, long scopeGroupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"getAccessibleRepositories",
-					_getAccessibleRepositoriesParameterTypes1);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					scopeGroupId);
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class, "getAccessibleRepositories",
+				_getAccessibleRepositoriesParameterTypes1);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, scopeGroupId);
 
 			Object returnObj = null;
 
@@ -105,11 +114,15 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
-					throw (com.liferay.portal.kernel.exception.PortalException)e;
+				if (e instanceof
+						com.liferay.portal.kernel.exception.PortalException) {
+
+					throw (com.liferay.portal.kernel.exception.PortalException)
+						e;
 				}
 
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -123,12 +136,14 @@ public class GoogleDriveSearchServiceHttp {
 
 	public static com.liferay.portal.kernel.json.JSONObject isGoogleDrive(
 		HttpPrincipal httpPrincipal, long repositoryId) {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"isGoogleDrive", _isGoogleDriveParameterTypes2);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					repositoryId);
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class, "isGoogleDrive",
+				_isGoogleDriveParameterTypes2);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, repositoryId);
 
 			Object returnObj = null;
 
@@ -136,7 +151,8 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -150,12 +166,14 @@ public class GoogleDriveSearchServiceHttp {
 
 	public static com.liferay.portal.kernel.json.JSONObject isAnyGoogleDrive(
 		HttpPrincipal httpPrincipal, long scopeGroupId) {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"isAnyGoogleDrive", _isAnyGoogleDriveParameterTypes3);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					scopeGroupId);
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class, "isAnyGoogleDrive",
+				_isAnyGoogleDriveParameterTypes3);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, scopeGroupId);
 
 			Object returnObj = null;
 
@@ -163,7 +181,8 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -178,12 +197,14 @@ public class GoogleDriveSearchServiceHttp {
 	public static com.liferay.portal.kernel.json.JSONObject search(
 		HttpPrincipal httpPrincipal, long repositoryId, String keywords,
 		int start, int end) {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"search", _searchParameterTypes5);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					repositoryId, keywords, start, end);
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class, "search",
+				_searchParameterTypes5);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, repositoryId, keywords, start, end);
 
 			Object returnObj = null;
 
@@ -191,7 +212,8 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -207,12 +229,14 @@ public class GoogleDriveSearchServiceHttp {
 		HttpPrincipal httpPrincipal,
 		java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
 		long searchStartTime) {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"mergeHits", _mergeHitsParameterTypes6);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					multiHits, searchStartTime);
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class, "mergeHits",
+				_mergeHitsParameterTypes6);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, multiHits, searchStartTime);
 
 			Object returnObj = null;
 
@@ -220,7 +244,8 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -235,12 +260,14 @@ public class GoogleDriveSearchServiceHttp {
 	public static com.liferay.portal.kernel.json.JSONObject search(
 		HttpPrincipal httpPrincipal, long[] repositoryIds, String keyword,
 		int start, int end) {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"search", _searchParameterTypes7);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					repositoryIds, keyword, start, end);
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class, "search",
+				_searchParameterTypes7);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, repositoryIds, keyword, start, end);
 
 			Object returnObj = null;
 
@@ -248,7 +275,8 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -263,12 +291,14 @@ public class GoogleDriveSearchServiceHttp {
 	public static com.liferay.portal.kernel.json.JSONObject searchByScopeId(
 		HttpPrincipal httpPrincipal, long scopeGroupId, String keywords,
 		int start, int end) {
-		try {
-			MethodKey methodKey = new MethodKey(GoogleDriveSearchServiceUtil.class,
-					"searchByScopeId", _searchByScopeIdParameterTypes8);
 
-			MethodHandler methodHandler = new MethodHandler(methodKey,
-					scopeGroupId, keywords, start, end);
+		try {
+			MethodKey methodKey = new MethodKey(
+				GoogleDriveSearchServiceUtil.class, "searchByScopeId",
+				_searchByScopeIdParameterTypes8);
+
+			MethodHandler methodHandler = new MethodHandler(
+				methodKey, scopeGroupId, keywords, start, end);
 
 			Object returnObj = null;
 
@@ -276,7 +306,8 @@ public class GoogleDriveSearchServiceHttp {
 				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
-				throw new com.liferay.portal.kernel.exception.SystemException(e);
+				throw new com.liferay.portal.kernel.exception.SystemException(
+					e);
 			}
 
 			return (com.liferay.portal.kernel.json.JSONObject)returnObj;
@@ -288,29 +319,27 @@ public class GoogleDriveSearchServiceHttp {
 		}
 	}
 
-	private static Log _log = LogFactoryUtil.getLog(GoogleDriveSearchServiceHttp.class);
-	private static final Class<?>[] _getAccessibleRepositoryIdsParameterTypes0 = new Class[] {
-			long.class
-		};
-	private static final Class<?>[] _getAccessibleRepositoriesParameterTypes1 = new Class[] {
-			long.class
-		};
-	private static final Class<?>[] _isGoogleDriveParameterTypes2 = new Class[] {
-			long.class
-		};
-	private static final Class<?>[] _isAnyGoogleDriveParameterTypes3 = new Class[] {
-			long.class
-		};
+	private static Log _log = LogFactoryUtil.getLog(
+		GoogleDriveSearchServiceHttp.class);
+
+	private static final Class<?>[] _getAccessibleRepositoryIdsParameterTypes0 =
+		new Class[] {long.class};
+	private static final Class<?>[] _getAccessibleRepositoriesParameterTypes1 =
+		new Class[] {long.class};
+	private static final Class<?>[] _isGoogleDriveParameterTypes2 =
+		new Class[] {long.class};
+	private static final Class<?>[] _isAnyGoogleDriveParameterTypes3 =
+		new Class[] {long.class};
 	private static final Class<?>[] _searchParameterTypes5 = new Class[] {
-			long.class, String.class, int.class, int.class
-		};
+		long.class, String.class, int.class, int.class
+	};
 	private static final Class<?>[] _mergeHitsParameterTypes6 = new Class[] {
-			java.util.List.class, long.class
-		};
+		java.util.List.class, long.class
+	};
 	private static final Class<?>[] _searchParameterTypes7 = new Class[] {
-			long[].class, String.class, int.class, int.class
-		};
-	private static final Class<?>[] _searchByScopeIdParameterTypes8 = new Class[] {
-			long.class, String.class, int.class, int.class
-		};
+		long[].class, String.class, int.class, int.class
+	};
+	private static final Class<?>[] _searchByScopeIdParameterTypes8 =
+		new Class[] {long.class, String.class, int.class, int.class};
+
 }

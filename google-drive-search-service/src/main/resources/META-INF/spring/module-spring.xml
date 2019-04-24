@@ -9,7 +9,5 @@
 >
 	<bean class="jp.liferay.google.drive.search.service.impl.GoogleDriveSearchLocalServiceImpl" id="jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService" />
 	<bean class="jp.liferay.google.drive.search.service.impl.GoogleDriveSearchServiceImpl" id="jp.liferay.google.drive.search.service.GoogleDriveSearchService" />
-	<bean class="jp.liferay.google.drive.search.service.persistence.impl.GoogleDriveSearchPersistenceImpl" id="jp.liferay.google.drive.search.service.persistence.GoogleDriveSearchPersistence" parent="basePersistence">
-		<property name="dataSource" ref="noDataSource" />
-	</bean>
+	<bean class="jp.liferay.google.drive.search.service.persistence.impl.GoogleDriveSearchPersistenceImpl" id="jp.liferay.google.drive.search.service.persistence.GoogleDriveSearchPersistence" parent="basePersistence" />
 </beans>

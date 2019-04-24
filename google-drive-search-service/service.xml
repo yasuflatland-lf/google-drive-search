@@ -1,12 +1,18 @@
 <?xml version="1.0"?>
-<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.0.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_0_0.dtd">
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_1_0.dtd">
 
-<service-builder package-path="jp.liferay.google.drive.search">
+<service-builder
+	package-path="jp.liferay.google.drive.search">
 	<namespace>GD</namespace>
-	<entity local-service="true" name="GoogleDriveSearch" remote-service="true" data-source="noDataSource" uuid="true">
+	<!-- TODO: Because of https://issues.liferay.com/browse/LPS-88444, you can't 
+		use empty data source for now. Empty data source should be implimented -->
+	<entity name="GoogleDriveSearch" local-service="true"
+		remote-service="true">
 		<column name="gdId" type="long" primary="true" />
-		
-		<reference entity="DLApp" package-path="com.liferay.portlet.documentlibrary" />
-		<reference entity="Repository" package-path="com.liferay.portal" />
+
+		<reference entity="DLApp"
+			package-path="com.liferay.portlet.documentlibrary" />
+		<reference entity="Repository"
+			package-path="com.liferay.portal" />
 	</entity>
 </service-builder>

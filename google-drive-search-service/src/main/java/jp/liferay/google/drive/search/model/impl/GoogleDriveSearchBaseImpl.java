@@ -34,10 +34,11 @@ import jp.liferay.google.drive.search.service.GoogleDriveSearchLocalServiceUtil;
 @ProviderType
 public abstract class GoogleDriveSearchBaseImpl
 	extends GoogleDriveSearchModelImpl implements GoogleDriveSearch {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. All methods that expect a google drive search model instance should use the {@link GoogleDriveSearch} interface instead.
+	 * Never modify or reference this class directly. All methods that expect a google drive search model instance should use the <code>GoogleDriveSearch</code> interface instead.
 	 */
 	@Override
 	public void persist() {
@@ -48,4 +49,5 @@ public abstract class GoogleDriveSearchBaseImpl
 			GoogleDriveSearchLocalServiceUtil.updateGoogleDriveSearch(this);
 		}
 	}
+
 }

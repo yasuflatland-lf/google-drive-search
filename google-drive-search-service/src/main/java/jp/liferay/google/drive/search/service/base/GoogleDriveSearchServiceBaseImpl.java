@@ -28,11 +28,11 @@ import com.liferay.portal.kernel.service.persistence.UserPersistence;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.spring.extender.service.ServiceReference;
 
+import javax.sql.DataSource;
+
 import jp.liferay.google.drive.search.model.GoogleDriveSearch;
 import jp.liferay.google.drive.search.service.GoogleDriveSearchService;
 import jp.liferay.google.drive.search.service.persistence.GoogleDriveSearchPersistence;
-
-import javax.sql.DataSource;
 
 /**
  * Provides the base implementation for the google drive search remote service.
@@ -43,15 +43,16 @@ import javax.sql.DataSource;
  *
  * @author Brian Wing Shun Chan
  * @see jp.liferay.google.drive.search.service.impl.GoogleDriveSearchServiceImpl
- * @see jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil
  * @generated
  */
-public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
+public abstract class GoogleDriveSearchServiceBaseImpl
+	extends BaseServiceImpl
 	implements GoogleDriveSearchService, IdentifiableOSGiService {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this class directly. Always use {@link jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil} to access the google drive search remote service.
+	 * Never modify or reference this class directly. Use <code>GoogleDriveSearchService</code> via injection or a <code>org.osgi.util.tracker.ServiceTracker</code> or use <code>jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil</code>.
 	 */
 
 	/**
@@ -59,7 +60,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the google drive search local service
 	 */
-	public jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService getGoogleDriveSearchLocalService() {
+	public jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService
+		getGoogleDriveSearchLocalService() {
+
 		return googleDriveSearchLocalService;
 	}
 
@@ -69,7 +72,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 * @param googleDriveSearchLocalService the google drive search local service
 	 */
 	public void setGoogleDriveSearchLocalService(
-		jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService googleDriveSearchLocalService) {
+		jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService
+			googleDriveSearchLocalService) {
+
 		this.googleDriveSearchLocalService = googleDriveSearchLocalService;
 	}
 
@@ -89,6 +94,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setGoogleDriveSearchService(
 		GoogleDriveSearchService googleDriveSearchService) {
+
 		this.googleDriveSearchService = googleDriveSearchService;
 	}
 
@@ -108,6 +114,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setGoogleDriveSearchPersistence(
 		GoogleDriveSearchPersistence googleDriveSearchPersistence) {
+
 		this.googleDriveSearchPersistence = googleDriveSearchPersistence;
 	}
 
@@ -116,7 +123,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the counter local service
 	 */
-	public com.liferay.counter.kernel.service.CounterLocalService getCounterLocalService() {
+	public com.liferay.counter.kernel.service.CounterLocalService
+		getCounterLocalService() {
+
 		return counterLocalService;
 	}
 
@@ -126,7 +135,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 * @param counterLocalService the counter local service
 	 */
 	public void setCounterLocalService(
-		com.liferay.counter.kernel.service.CounterLocalService counterLocalService) {
+		com.liferay.counter.kernel.service.CounterLocalService
+			counterLocalService) {
+
 		this.counterLocalService = counterLocalService;
 	}
 
@@ -135,7 +146,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the class name local service
 	 */
-	public com.liferay.portal.kernel.service.ClassNameLocalService getClassNameLocalService() {
+	public com.liferay.portal.kernel.service.ClassNameLocalService
+		getClassNameLocalService() {
+
 		return classNameLocalService;
 	}
 
@@ -145,7 +158,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 * @param classNameLocalService the class name local service
 	 */
 	public void setClassNameLocalService(
-		com.liferay.portal.kernel.service.ClassNameLocalService classNameLocalService) {
+		com.liferay.portal.kernel.service.ClassNameLocalService
+			classNameLocalService) {
+
 		this.classNameLocalService = classNameLocalService;
 	}
 
@@ -154,7 +169,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the class name remote service
 	 */
-	public com.liferay.portal.kernel.service.ClassNameService getClassNameService() {
+	public com.liferay.portal.kernel.service.ClassNameService
+		getClassNameService() {
+
 		return classNameService;
 	}
 
@@ -165,6 +182,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setClassNameService(
 		com.liferay.portal.kernel.service.ClassNameService classNameService) {
+
 		this.classNameService = classNameService;
 	}
 
@@ -184,6 +202,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setClassNamePersistence(
 		ClassNamePersistence classNamePersistence) {
+
 		this.classNamePersistence = classNamePersistence;
 	}
 
@@ -192,7 +211,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the repository local service
 	 */
-	public com.liferay.portal.kernel.service.RepositoryLocalService getRepositoryLocalService() {
+	public com.liferay.portal.kernel.service.RepositoryLocalService
+		getRepositoryLocalService() {
+
 		return repositoryLocalService;
 	}
 
@@ -202,7 +223,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 * @param repositoryLocalService the repository local service
 	 */
 	public void setRepositoryLocalService(
-		com.liferay.portal.kernel.service.RepositoryLocalService repositoryLocalService) {
+		com.liferay.portal.kernel.service.RepositoryLocalService
+			repositoryLocalService) {
+
 		this.repositoryLocalService = repositoryLocalService;
 	}
 
@@ -211,7 +234,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the repository remote service
 	 */
-	public com.liferay.portal.kernel.service.RepositoryService getRepositoryService() {
+	public com.liferay.portal.kernel.service.RepositoryService
+		getRepositoryService() {
+
 		return repositoryService;
 	}
 
@@ -222,6 +247,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setRepositoryService(
 		com.liferay.portal.kernel.service.RepositoryService repositoryService) {
+
 		this.repositoryService = repositoryService;
 	}
 
@@ -241,6 +267,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setRepositoryPersistence(
 		RepositoryPersistence repositoryPersistence) {
+
 		this.repositoryPersistence = repositoryPersistence;
 	}
 
@@ -249,7 +276,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the resource local service
 	 */
-	public com.liferay.portal.kernel.service.ResourceLocalService getResourceLocalService() {
+	public com.liferay.portal.kernel.service.ResourceLocalService
+		getResourceLocalService() {
+
 		return resourceLocalService;
 	}
 
@@ -259,7 +288,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 * @param resourceLocalService the resource local service
 	 */
 	public void setResourceLocalService(
-		com.liferay.portal.kernel.service.ResourceLocalService resourceLocalService) {
+		com.liferay.portal.kernel.service.ResourceLocalService
+			resourceLocalService) {
+
 		this.resourceLocalService = resourceLocalService;
 	}
 
@@ -268,7 +299,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the user local service
 	 */
-	public com.liferay.portal.kernel.service.UserLocalService getUserLocalService() {
+	public com.liferay.portal.kernel.service.UserLocalService
+		getUserLocalService() {
+
 		return userLocalService;
 	}
 
@@ -279,6 +312,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setUserLocalService(
 		com.liferay.portal.kernel.service.UserLocalService userLocalService) {
+
 		this.userLocalService = userLocalService;
 	}
 
@@ -298,6 +332,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setUserService(
 		com.liferay.portal.kernel.service.UserService userService) {
+
 		this.userService = userService;
 	}
 
@@ -324,7 +359,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the dl app local service
 	 */
-	public com.liferay.document.library.kernel.service.DLAppLocalService getDLAppLocalService() {
+	public com.liferay.document.library.kernel.service.DLAppLocalService
+		getDLAppLocalService() {
+
 		return dlAppLocalService;
 	}
 
@@ -334,7 +371,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 * @param dlAppLocalService the dl app local service
 	 */
 	public void setDLAppLocalService(
-		com.liferay.document.library.kernel.service.DLAppLocalService dlAppLocalService) {
+		com.liferay.document.library.kernel.service.DLAppLocalService
+			dlAppLocalService) {
+
 		this.dlAppLocalService = dlAppLocalService;
 	}
 
@@ -343,7 +382,9 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 *
 	 * @return the dl app remote service
 	 */
-	public com.liferay.document.library.kernel.service.DLAppService getDLAppService() {
+	public com.liferay.document.library.kernel.service.DLAppService
+		getDLAppService() {
+
 		return dlAppService;
 	}
 
@@ -354,6 +395,7 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	public void setDLAppService(
 		com.liferay.document.library.kernel.service.DLAppService dlAppService) {
+
 		this.dlAppService = dlAppService;
 	}
 
@@ -388,15 +430,16 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 	 */
 	protected void runSQL(String sql) {
 		try {
-			DataSource dataSource = googleDriveSearchPersistence.getDataSource();
+			DataSource dataSource =
+				googleDriveSearchPersistence.getDataSource();
 
 			DB db = DBManagerUtil.getDB();
 
 			sql = db.buildSQL(sql);
 			sql = PortalUtil.transformSQL(sql);
 
-			SqlUpdate sqlUpdate = SqlUpdateFactoryUtil.getSqlUpdate(dataSource,
-					sql);
+			SqlUpdate sqlUpdate = SqlUpdateFactoryUtil.getSqlUpdate(
+				dataSource, sql);
 
 			sqlUpdate.update();
 		}
@@ -405,36 +448,85 @@ public abstract class GoogleDriveSearchServiceBaseImpl extends BaseServiceImpl
 		}
 	}
 
-	@BeanReference(type = jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService.class)
-	protected jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService googleDriveSearchLocalService;
+	@BeanReference(
+		type = jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService.class
+	)
+	protected
+		jp.liferay.google.drive.search.service.GoogleDriveSearchLocalService
+			googleDriveSearchLocalService;
+
 	@BeanReference(type = GoogleDriveSearchService.class)
 	protected GoogleDriveSearchService googleDriveSearchService;
+
 	@BeanReference(type = GoogleDriveSearchPersistence.class)
 	protected GoogleDriveSearchPersistence googleDriveSearchPersistence;
-	@ServiceReference(type = com.liferay.counter.kernel.service.CounterLocalService.class)
-	protected com.liferay.counter.kernel.service.CounterLocalService counterLocalService;
-	@ServiceReference(type = com.liferay.portal.kernel.service.ClassNameLocalService.class)
-	protected com.liferay.portal.kernel.service.ClassNameLocalService classNameLocalService;
-	@ServiceReference(type = com.liferay.portal.kernel.service.ClassNameService.class)
-	protected com.liferay.portal.kernel.service.ClassNameService classNameService;
+
+	@ServiceReference(
+		type = com.liferay.counter.kernel.service.CounterLocalService.class
+	)
+	protected com.liferay.counter.kernel.service.CounterLocalService
+		counterLocalService;
+
+	@ServiceReference(
+		type = com.liferay.portal.kernel.service.ClassNameLocalService.class
+	)
+	protected com.liferay.portal.kernel.service.ClassNameLocalService
+		classNameLocalService;
+
+	@ServiceReference(
+		type = com.liferay.portal.kernel.service.ClassNameService.class
+	)
+	protected com.liferay.portal.kernel.service.ClassNameService
+		classNameService;
+
 	@ServiceReference(type = ClassNamePersistence.class)
 	protected ClassNamePersistence classNamePersistence;
-	@ServiceReference(type = com.liferay.portal.kernel.service.RepositoryLocalService.class)
-	protected com.liferay.portal.kernel.service.RepositoryLocalService repositoryLocalService;
-	@ServiceReference(type = com.liferay.portal.kernel.service.RepositoryService.class)
-	protected com.liferay.portal.kernel.service.RepositoryService repositoryService;
+
+	@ServiceReference(
+		type = com.liferay.portal.kernel.service.RepositoryLocalService.class
+	)
+	protected com.liferay.portal.kernel.service.RepositoryLocalService
+		repositoryLocalService;
+
+	@ServiceReference(
+		type = com.liferay.portal.kernel.service.RepositoryService.class
+	)
+	protected com.liferay.portal.kernel.service.RepositoryService
+		repositoryService;
+
 	@ServiceReference(type = RepositoryPersistence.class)
 	protected RepositoryPersistence repositoryPersistence;
-	@ServiceReference(type = com.liferay.portal.kernel.service.ResourceLocalService.class)
-	protected com.liferay.portal.kernel.service.ResourceLocalService resourceLocalService;
-	@ServiceReference(type = com.liferay.portal.kernel.service.UserLocalService.class)
-	protected com.liferay.portal.kernel.service.UserLocalService userLocalService;
-	@ServiceReference(type = com.liferay.portal.kernel.service.UserService.class)
+
+	@ServiceReference(
+		type = com.liferay.portal.kernel.service.ResourceLocalService.class
+	)
+	protected com.liferay.portal.kernel.service.ResourceLocalService
+		resourceLocalService;
+
+	@ServiceReference(
+		type = com.liferay.portal.kernel.service.UserLocalService.class
+	)
+	protected com.liferay.portal.kernel.service.UserLocalService
+		userLocalService;
+
+	@ServiceReference(
+		type = com.liferay.portal.kernel.service.UserService.class
+	)
 	protected com.liferay.portal.kernel.service.UserService userService;
+
 	@ServiceReference(type = UserPersistence.class)
 	protected UserPersistence userPersistence;
-	@ServiceReference(type = com.liferay.document.library.kernel.service.DLAppLocalService.class)
-	protected com.liferay.document.library.kernel.service.DLAppLocalService dlAppLocalService;
-	@ServiceReference(type = com.liferay.document.library.kernel.service.DLAppService.class)
-	protected com.liferay.document.library.kernel.service.DLAppService dlAppService;
+
+	@ServiceReference(
+		type = com.liferay.document.library.kernel.service.DLAppLocalService.class
+	)
+	protected com.liferay.document.library.kernel.service.DLAppLocalService
+		dlAppLocalService;
+
+	@ServiceReference(
+		type = com.liferay.document.library.kernel.service.DLAppService.class
+	)
+	protected com.liferay.document.library.kernel.service.DLAppService
+		dlAppService;
+
 }

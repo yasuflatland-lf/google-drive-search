@@ -37,116 +37,123 @@ import java.util.List;
  *
  * @author Brian Wing Shun Chan
  * @see GoogleDriveSearchServiceUtil
- * @see jp.liferay.google.drive.search.service.base.GoogleDriveSearchServiceBaseImpl
- * @see jp.liferay.google.drive.search.service.impl.GoogleDriveSearchServiceImpl
  * @generated
  */
 @AccessControlled
 @JSONWebService
-@OSGiBeanProperties(property =  {
-	"json.web.service.context.name=gd", "json.web.service.context.path=GoogleDriveSearch"}, service = GoogleDriveSearchService.class)
+@OSGiBeanProperties(
+	property = {
+		"json.web.service.context.name=gd",
+		"json.web.service.context.path=GoogleDriveSearch"
+	},
+	service = GoogleDriveSearchService.class
+)
 @ProviderType
-@Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
-	PortalException.class, SystemException.class})
+@Transactional(
+	isolation = Isolation.PORTAL,
+	rollbackFor = {PortalException.class, SystemException.class}
+)
 public interface GoogleDriveSearchService extends BaseService {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify or reference this interface directly. Always use {@link GoogleDriveSearchServiceUtil} to access the google drive search remote service. Add custom service methods to {@link jp.liferay.google.drive.search.service.impl.GoogleDriveSearchServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify or reference this interface directly. Always use {@link GoogleDriveSearchServiceUtil} to access the google drive search remote service. Add custom service methods to <code>jp.liferay.google.drive.search.service.impl.GoogleDriveSearchServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
 
 	/**
-	* Get Accessible Repositories
-	*
-	* @param scopeGroupId
-	* @return Accessible Repositories
-	* @throws PortalException
-	*/
+	 * Get Accessible Repositories
+	 *
+	 * @param scopeGroupId
+	 * @return Accessible Repositories
+	 * @throws PortalException
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public JSONObject getAccessibleRepositories(long scopeGroupId)
 		throws PortalException;
 
 	/**
-	* Get Accessible Repository Ids
-	*
-	* @param scopeGroupId
-	* @return Accessible Repository Ids by long
-	* @throws PortalException
-	*/
+	 * Get Accessible Repository Ids
+	 *
+	 * @param scopeGroupId
+	 * @return Accessible Repository Ids by long
+	 * @throws PortalException
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public JSONObject getAccessibleRepositoryIds(long scopeGroupId)
 		throws PortalException;
 
 	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
+	 * Returns the OSGi service identifier.
+	 *
+	 * @return the OSGi service identifier
+	 */
 	public String getOSGiServiceIdentifier();
 
 	/**
-	* Check if there are any Google Drive repository registered.
-	*
-	* @param scopeGroupId
-	* @return true if any google drive repository exists or false.
-	*/
+	 * Check if there are any Google Drive repository registered.
+	 *
+	 * @param scopeGroupId
+	 * @return true if any google drive repository exists or false.
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public JSONObject isAnyGoogleDrive(long scopeGroupId);
 
 	/**
-	* Check if it's Google Drive Repository
-	*
-	* @param repositoryId
-	* @return True if it's Google Drive or false.
-	*/
+	 * Check if it's Google Drive Repository
+	 *
+	 * @param repositoryId
+	 * @return True if it's Google Drive or false.
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public JSONObject isGoogleDrive(long repositoryId);
 
 	/**
-	* Merge Hits from multiple repositories
-	*
-	* @param multiHits
-	* @param searchStartTime
-	* @return
-	*/
+	 * Merge Hits from multiple repositories
+	 *
+	 * @param multiHits
+	 * @param searchStartTime
+	 * @return
+	 */
 	public JSONObject mergeHits(List<Hits> multiHits, long searchStartTime);
 
 	/**
-	* Search Google Drive
-	*
-	* @param repositoryId
-	* @param keywords
-	* @param start
-	* @param end
-	* @return
-	*/
+	 * Search Google Drive
+	 *
+	 * @param repositoryId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public JSONObject search(long repositoryId, String keywords, int start,
-		int end);
+	public JSONObject search(
+		long repositoryId, String keywords, int start, int end);
 
 	/**
-	* Search Multiple Google Drive Repositories
-	*
-	* @param repositoryIds Google Drive repository ids
-	* @param keyword Search keywords
-	* @param start Search start offset. The first time
-	* @param end
-	* @return
-	*/
+	 * Search Multiple Google Drive Repositories
+	 *
+	 * @param repositoryIds Google Drive repository ids
+	 * @param keyword Search keywords
+	 * @param start Search start offset. The first time
+	 * @param end
+	 * @return
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public JSONObject search(long[] repositoryIds, String keyword, int start,
-		int end);
+	public JSONObject search(
+		long[] repositoryIds, String keyword, int start, int end);
 
 	/**
-	* Search by Scope Group ID
-	*
-	* @param scopeGroupId
-	* @param keywords
-	* @param start
-	* @param end
-	* @return
-	*/
+	 * Search by Scope Group ID
+	 *
+	 * @param scopeGroupId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public JSONObject searchByScopeId(long scopeGroupId, String keywords,
-		int start, int end);
+	public JSONObject searchByScopeId(
+		long scopeGroupId, String keywords, int start, int end);
+
 }

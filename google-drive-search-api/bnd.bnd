@@ -2,6 +2,7 @@ Bundle-Name: google-drive-search-api
 Bundle-SymbolicName: jp.liferay.google.drive.search.api
 Bundle-Version: 1.0.0
 Export-Package:\
+	jp.liferay.google.drive.search.datasource,\
 	jp.liferay.google.drive.search.exception,\
 	jp.liferay.google.drive.search.model,\
 	jp.liferay.google.drive.search.service,\

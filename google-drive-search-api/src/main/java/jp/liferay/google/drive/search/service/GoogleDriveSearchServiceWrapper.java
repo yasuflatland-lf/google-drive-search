@@ -26,135 +26,148 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
  * @generated
  */
 @ProviderType
-public class GoogleDriveSearchServiceWrapper implements GoogleDriveSearchService,
-	ServiceWrapper<GoogleDriveSearchService> {
+public class GoogleDriveSearchServiceWrapper
+	implements GoogleDriveSearchService,
+			   ServiceWrapper<GoogleDriveSearchService> {
+
 	public GoogleDriveSearchServiceWrapper(
 		GoogleDriveSearchService googleDriveSearchService) {
+
 		_googleDriveSearchService = googleDriveSearchService;
 	}
 
 	/**
-	* Get Accessible Repositories
-	*
-	* @param scopeGroupId
-	* @return Accessible Repositories
-	* @throws PortalException
-	*/
+	 * Get Accessible Repositories
+	 *
+	 * @param scopeGroupId
+	 * @return Accessible Repositories
+	 * @throws PortalException
+	 */
 	@Override
 	public com.liferay.portal.kernel.json.JSONObject getAccessibleRepositories(
-		long scopeGroupId)
+			long scopeGroupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
-		return _googleDriveSearchService.getAccessibleRepositories(scopeGroupId);
+
+		return _googleDriveSearchService.getAccessibleRepositories(
+			scopeGroupId);
 	}
 
 	/**
-	* Get Accessible Repository Ids
-	*
-	* @param scopeGroupId
-	* @return Accessible Repository Ids by long
-	* @throws PortalException
-	*/
+	 * Get Accessible Repository Ids
+	 *
+	 * @param scopeGroupId
+	 * @return Accessible Repository Ids by long
+	 * @throws PortalException
+	 */
 	@Override
 	public com.liferay.portal.kernel.json.JSONObject getAccessibleRepositoryIds(
-		long scopeGroupId)
+			long scopeGroupId)
 		throws com.liferay.portal.kernel.exception.PortalException {
-		return _googleDriveSearchService.getAccessibleRepositoryIds(scopeGroupId);
+
+		return _googleDriveSearchService.getAccessibleRepositoryIds(
+			scopeGroupId);
 	}
 
 	/**
-	* Returns the OSGi service identifier.
-	*
-	* @return the OSGi service identifier
-	*/
+	 * Returns the OSGi service identifier.
+	 *
+	 * @return the OSGi service identifier
+	 */
 	@Override
 	public String getOSGiServiceIdentifier() {
 		return _googleDriveSearchService.getOSGiServiceIdentifier();
 	}
 
 	/**
-	* Check if there are any Google Drive repository registered.
-	*
-	* @param scopeGroupId
-	* @return true if any google drive repository exists or false.
-	*/
+	 * Check if there are any Google Drive repository registered.
+	 *
+	 * @param scopeGroupId
+	 * @return true if any google drive repository exists or false.
+	 */
 	@Override
 	public com.liferay.portal.kernel.json.JSONObject isAnyGoogleDrive(
 		long scopeGroupId) {
+
 		return _googleDriveSearchService.isAnyGoogleDrive(scopeGroupId);
 	}
 
 	/**
-	* Check if it's Google Drive Repository
-	*
-	* @param repositoryId
-	* @return True if it's Google Drive or false.
-	*/
+	 * Check if it's Google Drive Repository
+	 *
+	 * @param repositoryId
+	 * @return True if it's Google Drive or false.
+	 */
 	@Override
 	public com.liferay.portal.kernel.json.JSONObject isGoogleDrive(
 		long repositoryId) {
+
 		return _googleDriveSearchService.isGoogleDrive(repositoryId);
 	}
 
 	/**
-	* Merge Hits from multiple repositories
-	*
-	* @param multiHits
-	* @param searchStartTime
-	* @return
-	*/
+	 * Merge Hits from multiple repositories
+	 *
+	 * @param multiHits
+	 * @param searchStartTime
+	 * @return
+	 */
 	@Override
 	public com.liferay.portal.kernel.json.JSONObject mergeHits(
 		java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
 		long searchStartTime) {
+
 		return _googleDriveSearchService.mergeHits(multiHits, searchStartTime);
 	}
 
 	/**
-	* Search Google Drive
-	*
-	* @param repositoryId
-	* @param keywords
-	* @param start
-	* @param end
-	* @return
-	*/
+	 * Search Google Drive
+	 *
+	 * @param repositoryId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	@Override
-	public com.liferay.portal.kernel.json.JSONObject search(long repositoryId,
-		String keywords, int start, int end) {
-		return _googleDriveSearchService.search(repositoryId, keywords, start,
-			end);
+	public com.liferay.portal.kernel.json.JSONObject search(
+		long repositoryId, String keywords, int start, int end) {
+
+		return _googleDriveSearchService.search(
+			repositoryId, keywords, start, end);
 	}
 
 	/**
-	* Search Multiple Google Drive Repositories
-	*
-	* @param repositoryIds Google Drive repository ids
-	* @param keyword Search keywords
-	* @param start Search start offset. The first time
-	* @param end
-	* @return
-	*/
+	 * Search Multiple Google Drive Repositories
+	 *
+	 * @param repositoryIds Google Drive repository ids
+	 * @param keyword Search keywords
+	 * @param start Search start offset. The first time
+	 * @param end
+	 * @return
+	 */
 	@Override
 	public com.liferay.portal.kernel.json.JSONObject search(
 		long[] repositoryIds, String keyword, int start, int end) {
-		return _googleDriveSearchService.search(repositoryIds, keyword, start,
-			end);
+
+		return _googleDriveSearchService.search(
+			repositoryIds, keyword, start, end);
 	}
 
 	/**
-	* Search by Scope Group ID
-	*
-	* @param scopeGroupId
-	* @param keywords
-	* @param start
-	* @param end
-	* @return
-	*/
+	 * Search by Scope Group ID
+	 *
+	 * @param scopeGroupId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	@Override
 	public com.liferay.portal.kernel.json.JSONObject searchByScopeId(
 		long scopeGroupId, String keywords, int start, int end) {
-		return _googleDriveSearchService.searchByScopeId(scopeGroupId,
-			keywords, start, end);
+
+		return _googleDriveSearchService.searchByScopeId(
+			scopeGroupId, keywords, start, end);
 	}
 
 	@Override
@@ -165,8 +178,10 @@ public class GoogleDriveSearchServiceWrapper implements GoogleDriveSearchService
 	@Override
 	public void setWrappedService(
 		GoogleDriveSearchService googleDriveSearchService) {
+
 		_googleDriveSearchService = googleDriveSearchService;
 	}
 
 	private GoogleDriveSearchService _googleDriveSearchService;
+
 }

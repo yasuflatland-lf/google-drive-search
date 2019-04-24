@@ -25,19 +25,23 @@ import com.liferay.portal.kernel.util.Accessor;
  *
  * @author Brian Wing Shun Chan
  * @see GoogleDriveSearchModel
- * @see jp.liferay.google.drive.search.model.impl.GoogleDriveSearchImpl
- * @see jp.liferay.google.drive.search.model.impl.GoogleDriveSearchModelImpl
  * @generated
  */
-@ImplementationClassName("jp.liferay.google.drive.search.model.impl.GoogleDriveSearchImpl")
+@ImplementationClassName(
+	"jp.liferay.google.drive.search.model.impl.GoogleDriveSearchImpl"
+)
 @ProviderType
-public interface GoogleDriveSearch extends GoogleDriveSearchModel, PersistedModel {
+public interface GoogleDriveSearch
+	extends GoogleDriveSearchModel, PersistedModel {
+
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
-	 * Never modify this interface directly. Add methods to {@link jp.liferay.google.drive.search.model.impl.GoogleDriveSearchImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
+	 * Never modify this interface directly. Add methods to <code>jp.liferay.google.drive.search.model.impl.GoogleDriveSearchImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public static final Accessor<GoogleDriveSearch, Long> GD_ID_ACCESSOR = new Accessor<GoogleDriveSearch, Long>() {
+	public static final Accessor<GoogleDriveSearch, Long> GD_ID_ACCESSOR =
+		new Accessor<GoogleDriveSearch, Long>() {
+
 			@Override
 			public Long get(GoogleDriveSearch googleDriveSearch) {
 				return googleDriveSearch.getGdId();
@@ -52,5 +56,7 @@ public interface GoogleDriveSearch extends GoogleDriveSearchModel, PersistedMode
 			public Class<GoogleDriveSearch> getTypeClass() {
 				return GoogleDriveSearch.class;
 			}
+
 		};
+
 }

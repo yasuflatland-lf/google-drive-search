@@ -19,25 +19,26 @@ import aQute.bnd.annotation.ProviderType;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
-import jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil;
-
 import java.rmi.RemoteException;
+
+import jp.liferay.google.drive.search.service.GoogleDriveSearchServiceUtil;
 
 /**
  * Provides the SOAP utility for the
- * {@link GoogleDriveSearchServiceUtil} service utility. The
- * static methods of this class calls the same methods of the service utility.
- * However, the signatures are different because it is difficult for SOAP to
- * support certain types.
+ * <code>GoogleDriveSearchServiceUtil</code> service
+ * utility. The static methods of this class call the same methods of the
+ * service utility. However, the signatures are different because it is
+ * difficult for SOAP to support certain types.
  *
  * <p>
  * ServiceBuilder follows certain rules in translating the methods. For example,
- * if the method in the service utility returns a {@link java.util.List}, that
- * is translated to an array of {@link jp.liferay.google.drive.search.model.GoogleDriveSearchSoap}.
- * If the method in the service utility returns a
- * {@link jp.liferay.google.drive.search.model.GoogleDriveSearch}, that is translated to a
- * {@link jp.liferay.google.drive.search.model.GoogleDriveSearchSoap}. Methods that SOAP cannot
- * safely wire are skipped.
+ * if the method in the service utility returns a <code>java.util.List</code>,
+ * that is translated to an array of
+ * <code>jp.liferay.google.drive.search.model.GoogleDriveSearchSoap</code>. If the method in the
+ * service utility returns a
+ * <code>jp.liferay.google.drive.search.model.GoogleDriveSearch</code>, that is translated to a
+ * <code>jp.liferay.google.drive.search.model.GoogleDriveSearchSoap</code>. Methods that SOAP
+ * cannot safely wire are skipped.
  * </p>
  *
  * <p>
@@ -59,23 +60,25 @@ import java.rmi.RemoteException;
  *
  * @author Brian Wing Shun Chan
  * @see GoogleDriveSearchServiceHttp
- * @see jp.liferay.google.drive.search.model.GoogleDriveSearchSoap
- * @see GoogleDriveSearchServiceUtil
  * @generated
  */
 @ProviderType
 public class GoogleDriveSearchServiceSoap {
+
 	/**
-	* Get Accessible Repository Ids
-	*
-	* @param scopeGroupId
-	* @return Accessible Repository Ids by long
-	* @throws PortalException
-	*/
+	 * Get Accessible Repository Ids
+	 *
+	 * @param scopeGroupId
+	 * @return Accessible Repository Ids by long
+	 * @throws PortalException
+	 */
 	public static String getAccessibleRepositoryIds(long scopeGroupId)
 		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.getAccessibleRepositoryIds(scopeGroupId);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.getAccessibleRepositoryIds(
+					scopeGroupId);
 
 			return returnValue.toString();
 		}
@@ -87,16 +90,19 @@ public class GoogleDriveSearchServiceSoap {
 	}
 
 	/**
-	* Get Accessible Repositories
-	*
-	* @param scopeGroupId
-	* @return Accessible Repositories
-	* @throws PortalException
-	*/
+	 * Get Accessible Repositories
+	 *
+	 * @param scopeGroupId
+	 * @return Accessible Repositories
+	 * @throws PortalException
+	 */
 	public static String getAccessibleRepositories(long scopeGroupId)
 		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.getAccessibleRepositories(scopeGroupId);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.getAccessibleRepositories(
+					scopeGroupId);
 
 			return returnValue.toString();
 		}
@@ -108,15 +114,17 @@ public class GoogleDriveSearchServiceSoap {
 	}
 
 	/**
-	* Check if it's Google Drive Repository
-	*
-	* @param repositoryId
-	* @return True if it's Google Drive or false.
-	*/
+	 * Check if it's Google Drive Repository
+	 *
+	 * @param repositoryId
+	 * @return True if it's Google Drive or false.
+	 */
 	public static String isGoogleDrive(long repositoryId)
 		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.isGoogleDrive(repositoryId);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.isGoogleDrive(repositoryId);
 
 			return returnValue.toString();
 		}
@@ -128,15 +136,17 @@ public class GoogleDriveSearchServiceSoap {
 	}
 
 	/**
-	* Check if there are any Google Drive repository registered.
-	*
-	* @param scopeGroupId
-	* @return true if any google drive repository exists or false.
-	*/
+	 * Check if there are any Google Drive repository registered.
+	 *
+	 * @param scopeGroupId
+	 * @return true if any google drive repository exists or false.
+	 */
 	public static String isAnyGoogleDrive(long scopeGroupId)
 		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.isAnyGoogleDrive(scopeGroupId);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.isAnyGoogleDrive(scopeGroupId);
 
 			return returnValue.toString();
 		}
@@ -148,19 +158,22 @@ public class GoogleDriveSearchServiceSoap {
 	}
 
 	/**
-	* Search Google Drive
-	*
-	* @param repositoryId
-	* @param keywords
-	* @param start
-	* @param end
-	* @return
-	*/
-	public static String search(long repositoryId, String keywords, int start,
-		int end) throws RemoteException {
+	 * Search Google Drive
+	 *
+	 * @param repositoryId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public static String search(
+			long repositoryId, String keywords, int start, int end)
+		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.search(repositoryId,
-					keywords, start, end);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.search(
+					repositoryId, keywords, start, end);
 
 			return returnValue.toString();
 		}
@@ -172,18 +185,21 @@ public class GoogleDriveSearchServiceSoap {
 	}
 
 	/**
-	* Merge Hits from multiple repositories
-	*
-	* @param multiHits
-	* @param searchStartTime
-	* @return
-	*/
+	 * Merge Hits from multiple repositories
+	 *
+	 * @param multiHits
+	 * @param searchStartTime
+	 * @return
+	 */
 	public static String mergeHits(
-		java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
-		long searchStartTime) throws RemoteException {
+			java.util.List<com.liferay.portal.kernel.search.Hits> multiHits,
+			long searchStartTime)
+		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.mergeHits(multiHits,
-					searchStartTime);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.mergeHits(
+					multiHits, searchStartTime);
 
 			return returnValue.toString();
 		}
@@ -195,19 +211,22 @@ public class GoogleDriveSearchServiceSoap {
 	}
 
 	/**
-	* Search Multiple Google Drive Repositories
-	*
-	* @param repositoryIds Google Drive repository ids
-	* @param keyword Search keywords
-	* @param start Search start offset. The first time
-	* @param end
-	* @return
-	*/
-	public static String search(long[] repositoryIds, String keyword,
-		int start, int end) throws RemoteException {
+	 * Search Multiple Google Drive Repositories
+	 *
+	 * @param repositoryIds Google Drive repository ids
+	 * @param keyword Search keywords
+	 * @param start Search start offset. The first time
+	 * @param end
+	 * @return
+	 */
+	public static String search(
+			long[] repositoryIds, String keyword, int start, int end)
+		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.search(repositoryIds,
-					keyword, start, end);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.search(
+					repositoryIds, keyword, start, end);
 
 			return returnValue.toString();
 		}
@@ -219,19 +238,22 @@ public class GoogleDriveSearchServiceSoap {
 	}
 
 	/**
-	* Search by Scope Group ID
-	*
-	* @param scopeGroupId
-	* @param keywords
-	* @param start
-	* @param end
-	* @return
-	*/
-	public static String searchByScopeId(long scopeGroupId, String keywords,
-		int start, int end) throws RemoteException {
+	 * Search by Scope Group ID
+	 *
+	 * @param scopeGroupId
+	 * @param keywords
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public static String searchByScopeId(
+			long scopeGroupId, String keywords, int start, int end)
+		throws RemoteException {
+
 		try {
-			com.liferay.portal.kernel.json.JSONObject returnValue = GoogleDriveSearchServiceUtil.searchByScopeId(scopeGroupId,
-					keywords, start, end);
+			com.liferay.portal.kernel.json.JSONObject returnValue =
+				GoogleDriveSearchServiceUtil.searchByScopeId(
+					scopeGroupId, keywords, start, end);
 
 			return returnValue.toString();
 		}
@@ -242,5 +264,7 @@ public class GoogleDriveSearchServiceSoap {
 		}
 	}
 
-	private static Log _log = LogFactoryUtil.getLog(GoogleDriveSearchServiceSoap.class);
+	private static Log _log = LogFactoryUtil.getLog(
+		GoogleDriveSearchServiceSoap.class);
+
 }
